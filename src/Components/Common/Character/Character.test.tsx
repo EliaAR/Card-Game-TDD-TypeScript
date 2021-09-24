@@ -4,8 +4,8 @@ import { Character } from "./Character";
 function Setup() {
   return render(
     <Character
-      nameCharacter="Nombre del personaje"
-      srcImgCharacter="https://via.placeholder.com/150"
+      characterName="Nombre del personaje"
+      characterSrcImg="https://via.placeholder.com/150"
       life={7}
       strength={8}
       dexterity={9}
@@ -16,9 +16,9 @@ function Setup() {
 describe("character is display corretly", () => {
   it("name is shown", () => {
     Setup();
-    const nameCharacter = screen.getByText(/nombre del personaje/i);
+    const characterName = screen.getByText(/nombre del personaje/i);
 
-    expect(nameCharacter).toBeInTheDocument();
+    expect(characterName).toBeInTheDocument();
   });
   it("image is shown", () => {
     Setup();
