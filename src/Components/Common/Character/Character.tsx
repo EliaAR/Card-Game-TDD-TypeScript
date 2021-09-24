@@ -1,4 +1,5 @@
 interface CharacterProps {
+  nameCharacter: string;
   srcImgCharacter: string;
   life: number;
   strength: number;
@@ -6,6 +7,7 @@ interface CharacterProps {
 }
 
 function Character({
+  nameCharacter,
   srcImgCharacter,
   life,
   strength,
@@ -13,7 +15,10 @@ function Character({
 }: CharacterProps) {
   return (
     <section>
-      <img src={srcImgCharacter} alt="imagen de personaje" />
+      <article>
+        <p>{nameCharacter}</p>
+        <img src={srcImgCharacter} alt="imagen de personaje" />
+      </article>
       <article>
         <p>Vida: {life} </p>
         <p>Fuerza: {strength} </p>
