@@ -1,16 +1,25 @@
 interface CharacterProps {
+  srcImgCharacter: string;
   life: number;
   strength: number;
   dexterity: number;
 }
 
-function Character({ life, strength, dexterity }: CharacterProps) {
+function Character({
+  srcImgCharacter,
+  life,
+  strength,
+  dexterity,
+}: CharacterProps) {
   return (
-    <div>
-      <p>Vida: {life} </p>
-      <p>Fuerza: {strength} </p>
-      <p>Destreza: {dexterity} </p>
-    </div>
+    <section>
+      <img src={srcImgCharacter} alt="imagen de personaje" />
+      <article>
+        <p>Vida: {life} </p>
+        <p>Fuerza: {strength} </p>
+        <p>Destreza: {dexterity} </p>
+      </article>
+    </section>
   );
 }
 
