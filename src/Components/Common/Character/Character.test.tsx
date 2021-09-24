@@ -4,6 +4,7 @@ import { Character } from "./Character";
 function Setup() {
   return render(
     <Character
+      nameCharacter="Nombre del personaje"
       srcImgCharacter="https://via.placeholder.com/150"
       life={7}
       strength={8}
@@ -13,13 +14,19 @@ function Setup() {
 }
 
 describe("character is display corretly", () => {
+  it("name is shown", () => {
+    Setup();
+    const nameCharacter = screen.getByText(/nombre del personaje/i);
+
+    expect(nameCharacter).toBeInTheDocument();
+  });
   it("image is shown", () => {
     Setup();
-    const CharacterImg = screen.getByAltText(
+    const characterImg = screen.getByAltText(
       /imagen de personaje/i
     ) as HTMLImageElement;
 
-    expect(CharacterImg.src).toBe("https://via.placeholder.com/150");
+    expect(characterImg.src).toBe("https://via.placeholder.com/150");
   });
   it("stats are shown", () => {
     Setup();
