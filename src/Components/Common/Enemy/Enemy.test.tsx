@@ -1,9 +1,12 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { Enemy } from "./Enemy";
 
 function Setup() {
-  return render(
+  const onClickEnemyMock = jest.fn();
+  render(
     <Enemy
+      onClickEnemy={onClickEnemyMock}
       enemyName="Nombre del enemigo"
       enemySrcImg="https://via.placeholder.com/150"
       life={7}
@@ -11,9 +14,10 @@ function Setup() {
       dexterity={9}
     />
   );
+  return onClickEnemyMock;
 }
 
-describe("enemy is display corretly", () => {
+describe("enemy is working corretly", () => {
   it("name is shown", () => {
     Setup();
     const nameEnemy = screen.getByText(/nombre del enemigo/i);
@@ -37,5 +41,11 @@ describe("enemy is display corretly", () => {
     expect(life).toBeInTheDocument();
     expect(strength).toBeInTheDocument();
     expect(dexterity).toBeInTheDocument();
+  });
+  it("when click on enemy onClickEnemy is called", () => {
+    const onClickMock = Setup();
+    const button = screen.getByRole("button", { name: /nombre del enemigo/i });
+    userEvent.click(button);
+    expect(onClickMock).toHaveBeenCalled();
   });
 });
