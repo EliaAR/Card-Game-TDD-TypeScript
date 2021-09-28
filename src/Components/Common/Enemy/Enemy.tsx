@@ -1,4 +1,5 @@
 interface EnemyProps {
+  onClickEnemy: React.MouseEventHandler<HTMLElement>;
   enemyName: string;
   enemySrcImg: string;
   life: number;
@@ -7,6 +8,7 @@ interface EnemyProps {
 }
 
 function Enemy({
+  onClickEnemy,
   enemyName,
   enemySrcImg,
   life,
@@ -14,7 +16,11 @@ function Enemy({
   dexterity,
 }: EnemyProps) {
   return (
-    <section>
+    <section
+      onClick={onClickEnemy}
+      role="button"
+      aria-label="nombre del enemigo"
+    >
       <article>
         <p>{enemyName}</p>
         <img src={enemySrcImg} alt="imagen de enemigo" />
