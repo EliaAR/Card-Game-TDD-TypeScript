@@ -1,11 +1,11 @@
 import { render, screen } from "@testing-library/react";
-import { Character } from "./Character";
+import { Player } from "./Player";
 
 function Setup() {
   return render(
-    <Character
-      characterName="Nombre del personaje"
-      characterSrcImg="https://via.placeholder.com/150"
+    <Player
+      playerName="Nombre del jugador"
+      playerSrcImg="https://via.placeholder.com/150"
       life={7}
       strength={8}
       dexterity={9}
@@ -13,20 +13,20 @@ function Setup() {
   );
 }
 
-describe("character is display corretly", () => {
+describe("palyer is display corretly", () => {
   it("name is shown", () => {
     Setup();
-    const characterName = screen.getByText(/nombre del personaje/i);
+    const playerName = screen.getByText(/nombre del jugador/i);
 
-    expect(characterName).toBeInTheDocument();
+    expect(playerName).toBeInTheDocument();
   });
   it("image is shown", () => {
     Setup();
-    const characterImg = screen.getByAltText(
+    const playerImg = screen.getByAltText(
       /imagen de personaje/i
     ) as HTMLImageElement;
 
-    expect(characterImg.src).toBe("https://via.placeholder.com/150");
+    expect(playerImg.src).toBe("https://via.placeholder.com/150");
   });
   it("stats are shown", () => {
     Setup();

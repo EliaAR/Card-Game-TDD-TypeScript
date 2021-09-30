@@ -1,23 +1,23 @@
-interface CharacterProps {
-  characterName: string;
-  characterSrcImg: string;
+interface PlayerProps {
+  playerName: string;
+  playerSrcImg: string;
   life: number;
   strength: number;
   dexterity: number;
 }
 
-function Character({
-  characterName,
-  characterSrcImg,
+function Player({
+  playerName,
+  playerSrcImg,
   life,
   strength,
   dexterity,
-}: CharacterProps) {
+}: playerProps) {
   return (
     <section>
       <article>
-        <p>{characterName}</p>
-        <img src={characterSrcImg} alt="imagen de personaje" />
+        <p>{playerName}</p>
+        <img src={playerSrcImg} alt="imagen de personaje" />
       </article>
       <article>
         <p>Vida: {life} </p>
@@ -28,4 +28,4 @@ function Character({
   );
 }
 
-export { Character };
+export { Player };
