@@ -1,12 +1,22 @@
 import { resolveCombat } from "./resolveCombat";
 
-describe ("resolve combat correctly",() => {
-    it("attack hits successfully",()=>{
-        const hitPoints = resolveCombat(10,7);
-        expect(hitPoints).toBe(3)
-    })
-        it("missed attack",()=>{
-        const hitPoints = resolveCombat(2,7);
-        expect(hitPoints).toBe(0)
-    })
-})
+describe("resolve combat correctly", () => {
+  it("attack hits successfully", () => {
+    const hitPoints = resolveCombat(
+      16,
+      12,
+      () => 10,
+      () => 2
+    );
+    expect(hitPoints).toBe(5);
+  });
+  it("missed attack", () => {
+    const hitPoints = resolveCombat(
+      16,
+      12,
+      () => 7,
+      () => 1
+    );
+    expect(hitPoints).toBe(0);
+  });
+});
