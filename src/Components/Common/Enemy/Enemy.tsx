@@ -13,14 +13,10 @@ function Enemy({
   dexterity,
 }: EnemyProps) {
   return (
-    <section
-      onClick={onClickEnemy}
-      role="button"
-      aria-label="nombre del enemigo"
-    >
+    <section onClick={onClickEnemy} role="button" aria-label={name}>
       <article>
         <p>{name}</p>
-        <img src={srcImg} alt="imagen de enemigo" />
+        <img src={srcImg} alt={`Imagen ${name}`} />
       </article>
       <article>
         <p>Vida: {life} </p>

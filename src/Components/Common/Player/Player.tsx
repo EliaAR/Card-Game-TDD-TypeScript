@@ -7,7 +7,7 @@ function Player({ name, srcImg, life, strength, dexterity }: PlayerProps) {
     <section>
       <article>
         <p>{name}</p>
-        <img src={srcImg} alt="imagen de personaje" />
+        <img src={srcImg} alt={`Imagen ${name}`} />
       </article>
       <article>
         <p>Vida: {life} </p>

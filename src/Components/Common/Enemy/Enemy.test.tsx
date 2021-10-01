@@ -27,7 +27,7 @@ describe("enemy is working corretly", () => {
   it("image is shown", () => {
     Setup();
     const enemyImg = screen.getByAltText(
-      /imagen de enemigo/i
+      /imagen nombre del enemigo/i
     ) as HTMLImageElement;
 
     expect(enemyImg.src).toBe("https://via.placeholder.com/150");

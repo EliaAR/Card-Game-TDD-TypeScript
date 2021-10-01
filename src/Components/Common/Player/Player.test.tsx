@@ -13,7 +13,7 @@ function Setup() {
   );
 }
 
-describe("palyer is display corretly", () => {
+describe("player is display corretly", () => {
   it("name is shown", () => {
     Setup();
     const playerName = screen.getByText(/nombre del jugador/i);
@@ -23,7 +23,7 @@ describe("palyer is display corretly", () => {
   it("image is shown", () => {
     Setup();
     const playerImg = screen.getByAltText(
-      /imagen de personaje/i
+      /imagen nombre del jugador/i
     ) as HTMLImageElement;
 
     expect(playerImg.src).toBe("https://via.placeholder.com/150");
