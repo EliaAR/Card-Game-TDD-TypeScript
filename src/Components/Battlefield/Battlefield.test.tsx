@@ -26,7 +26,7 @@ function Setup(mock20: () => number, mock4: () => number) {
 }
 
 describe("when click on enemy action attack is performed correctly", () => {
-  it("when attack hits life changes", () => {
+  it("when attack hits life changes and is registered in CombatLog", () => {
     Setup(
       () => 12,
       () => 2
@@ -34,9 +34,12 @@ describe("when click on enemy action attack is performed correctly", () => {
     const button = screen.getByRole("button", { name: enemy.name });
     userEvent.click(button);
     const life = getByText(button, /vida: 25/i);
+    const log = screen.getByRole("log");
+    const message = getByText(log, /ataque exitoso, 5 puntos de daño/i);
     expect(life).toBeInTheDocument();
+    expect(message).toBeInTheDocument();
   });
-  it("attack failed", () => {
+  it("attack failed and is registered in CombatLog", () => {
     Setup(
       () => 8,
       () => 2
@@ -44,6 +47,9 @@ describe("when click on enemy action attack is performed correctly", () => {
     const button = screen.getByRole("button", { name: enemy.name });
     userEvent.click(button);
     const life = getByText(button, /vida: 30/i);
+    const log = screen.getByRole("log");
+    const message = getByText(log, /ataque fallido/i);
     expect(life).toBeInTheDocument();
+    expect(message).toBeInTheDocument();
   });
 });
