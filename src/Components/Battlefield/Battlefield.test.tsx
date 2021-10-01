@@ -38,7 +38,7 @@ describe("when click on enemy action attack is performed correctly", () => {
   });
   it("attack failed", () => {
     Setup(
-      () => 10,
+      () => 8,
       () => 2
     );
     const button = screen.getByRole("button", { name: enemy.name });
