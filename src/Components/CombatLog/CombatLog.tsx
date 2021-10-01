@@ -4,7 +4,7 @@ interface CombatLogProps {
 
 function CombatLog({ messages }: CombatLogProps) {
   return (
-    <section>
+    <section role="log">
       <p>Registro de combate</p>
       {messages.length ? (
         <ul>
