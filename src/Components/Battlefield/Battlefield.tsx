@@ -3,6 +3,7 @@ import { Player } from "../Common/Player/Player";
 import { Enemy } from "../Common/Enemy/Enemy";
 import { Character } from "../Common/Types";
 import { resolveCombat } from "../../Utils/resolveCombat";
+import { CombatLog } from "../CombatLog/CombatLog";
 
 interface BattlefieldProps {
   enemy: Character;
@@ -13,15 +14,27 @@ interface BattlefieldProps {
 
 function Battlefield({ enemy, player, roll20, roll4 }: BattlefieldProps) {
   const [life, setLife] = useState(enemy.life);
+  const [messages, setMessages] = useState<string[]>([]);
   return (
     <>
       <Enemy
-        onClickEnemy={() =>
-          setLife(
-            life -
-              resolveCombat(player.strength, enemy.dexterity, roll20, roll4)
-          )
-        }
+        onClickEnemy={() => {
+          const damage = resolveCombat(
+            player.strength,
+            enemy.dexterity,
+            roll20,
+            roll4
+          );
+          setLife(life - damage);
+          if (damage) {
+            setMessages([
+              ...messages,
+              `Ataque exitoso, ${damage} puntos de daño`,
+            ]);
+          } else {
+            setMessages([...messages, "Ataque fallido"]);
+          }
+        }}
         name={enemy.name}
         srcImg={enemy.srcImg}
         life={life}
@@ -35,6 +48,7 @@ function Battlefield({ enemy, player, roll20, roll4 }: BattlefieldProps) {
         strength={player.strength}
         dexterity={player.dexterity}
       />
+      <CombatLog messages={messages} />
     </>
   );
 }
