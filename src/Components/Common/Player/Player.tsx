@@ -1,23 +1,13 @@
-interface PlayerProps {
-  playerName: string;
-  playerSrcImg: string;
-  life: number;
-  strength: number;
-  dexterity: number;
-}
+import { Character } from "../Types";
 
-function Player({
-  playerName,
-  playerSrcImg,
-  life,
-  strength,
-  dexterity,
-}: playerProps) {
+interface PlayerProps extends Character {}
+
+function Player({ name, srcImg, life, strength, dexterity }: PlayerProps) {
   return (
     <section>
       <article>
-        <p>{playerName}</p>
-        <img src={playerSrcImg} alt="imagen de personaje" />
+        <p>{name}</p>
+        <img src={srcImg} alt="imagen de personaje" />
       </article>
       <article>
         <p>Vida: {life} </p>

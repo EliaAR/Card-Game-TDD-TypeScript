@@ -1,16 +1,13 @@
-interface EnemyProps {
+import { Character } from "../Types";
+
+interface EnemyProps extends Character {
   onClickEnemy: React.MouseEventHandler<HTMLElement>;
-  enemyName: string;
-  enemySrcImg: string;
-  life: number;
-  strength: number;
-  dexterity: number;
 }
 
 function Enemy({
   onClickEnemy,
-  enemyName,
-  enemySrcImg,
+  name,
+  srcImg,
   life,
   strength,
   dexterity,
@@ -22,8 +19,8 @@ function Enemy({
       aria-label="nombre del enemigo"
     >
       <article>
-        <p>{enemyName}</p>
-        <img src={enemySrcImg} alt="imagen de enemigo" />
+        <p>{name}</p>
+        <img src={srcImg} alt="imagen de enemigo" />
       </article>
       <article>
         <p>Vida: {life} </p>

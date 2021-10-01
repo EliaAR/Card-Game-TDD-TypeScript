@@ -4,8 +4,8 @@ import { Player } from "./Player";
 function Setup() {
   return render(
     <Player
-      playerName="Nombre del jugador"
-      playerSrcImg="https://via.placeholder.com/150"
+      name="Nombre del jugador"
+      srcImg="https://via.placeholder.com/150"
       life={7}
       strength={8}
       dexterity={9}

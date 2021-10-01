@@ -7,8 +7,8 @@ function Setup() {
   render(
     <Enemy
       onClickEnemy={onClickEnemyMock}
-      enemyName="Nombre del enemigo"
-      enemySrcImg="https://via.placeholder.com/150"
+      name="Nombre del enemigo"
+      srcImg="https://via.placeholder.com/150"
       life={7}
       strength={8}
       dexterity={9}
