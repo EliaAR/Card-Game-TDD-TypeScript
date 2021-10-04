@@ -4,7 +4,7 @@ interface PlayerProps extends Character {}
 
 function Player({ name, srcImg, life, strength, dexterity }: PlayerProps) {
   return (
-    <section>
+    <section data-testid="playerSection">
       <article>
         <p>{name}</p>
         <img src={srcImg} alt={`Imagen ${name}`} />
