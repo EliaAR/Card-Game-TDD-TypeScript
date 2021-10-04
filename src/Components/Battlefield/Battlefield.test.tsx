@@ -135,7 +135,7 @@ describe("Combat works correctly", () => {
     Setup(
       () => 8,
       () => 2,
-      () => 16,
+      () => 8,
       () => 2
     );
     const log = screen.getByRole("log");
