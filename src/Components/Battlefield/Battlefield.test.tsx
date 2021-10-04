@@ -54,7 +54,7 @@ describe("Combat works correctly", () => {
     const enemyLife = getByText(enemyButton, /vida: 25/i);
     const attackPlayerMessage = getByText(
       log,
-      /ataque exitoso, 5 puntos de daño/i
+      /ataque exitoso del jugador, 5 puntos de daño/i
     );
     expect(enemyLife).toBeInTheDocument();
     expect(attackPlayerMessage).toBeInTheDocument();
@@ -66,7 +66,7 @@ describe("Combat works correctly", () => {
     const playerLife = getByText(playerElement, /vida: 45/i);
     const attackEnemyMessage = getByText(
       log,
-      /ataque exitoso, 5 puntos de daño/i
+      /ataque exitoso del enemigo, 5 puntos de daño/i
     );
     expect(playerLife).toBeInTheDocument();
     expect(attackEnemyMessage).toBeInTheDocument();
@@ -87,7 +87,7 @@ describe("Combat works correctly", () => {
     const enemyLife = getByText(enemyButton, /vida: 25/i);
     const attackPlayerMessage = getByText(
       log,
-      /ataque exitoso, 5 puntos de daño/i
+      /ataque exitoso del jugador, 5 puntos de daño/i
     );
     expect(enemyLife).toBeInTheDocument();
     expect(attackPlayerMessage).toBeInTheDocument();
@@ -97,7 +97,7 @@ describe("Combat works correctly", () => {
 
     const playerElement = screen.getByTestId("playerSection");
     const playerLife = getByText(playerElement, /vida: 50/i);
-    const attackEnemyMessage = getByText(log, /ataque fallido/i);
+    const attackEnemyMessage = getByText(log, /ataque fallido del enemigo/i);
     expect(playerLife).toBeInTheDocument();
     expect(attackEnemyMessage).toBeInTheDocument();
   });
@@ -115,7 +115,7 @@ describe("Combat works correctly", () => {
     const enemyButton = screen.getByRole("button", { name: enemy.name });
     userEvent.click(enemyButton);
     const enemyLife = getByText(enemyButton, /vida: 30/i);
-    const attackPlayerMessage = getByText(log, /ataque fallido/i);
+    const attackPlayerMessage = getByText(log, /ataque fallido del jugador/i);
     expect(enemyLife).toBeInTheDocument();
     expect(attackPlayerMessage).toBeInTheDocument();
 
@@ -126,7 +126,7 @@ describe("Combat works correctly", () => {
     const playerLife = getByText(playerElement, /vida: 45/i);
     const attackEnemyMessage = getByText(
       log,
-      /ataque exitoso, 5 puntos de daño/i
+      /ataque exitoso del enemigo, 5 puntos de daño/i
     );
     expect(playerLife).toBeInTheDocument();
     expect(attackEnemyMessage).toBeInTheDocument();
@@ -145,7 +145,7 @@ describe("Combat works correctly", () => {
     const enemyButton = screen.getByRole("button", { name: enemy.name });
     userEvent.click(enemyButton);
     const enemyLife = getByText(enemyButton, /vida: 30/i);
-    const attackPlayerMessage = getByText(log, /ataque fallido/i);
+    const attackPlayerMessage = getByText(log, /ataque fallido del jugador/i);
     expect(enemyLife).toBeInTheDocument();
     expect(attackPlayerMessage).toBeInTheDocument();
 
@@ -154,7 +154,7 @@ describe("Combat works correctly", () => {
 
     const playerElement = screen.getByTestId("playerSection");
     const playerLife = getByText(playerElement, /vida: 50/i);
-    const attackEnemyMessage = getByText(log, /ataque fallido/i);
+    const attackEnemyMessage = getByText(log, /ataque fallido del enemigo/i);
     expect(playerLife).toBeInTheDocument();
     expect(attackEnemyMessage).toBeInTheDocument();
   });
