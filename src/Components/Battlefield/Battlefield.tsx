@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Player } from "../Common/Player/Player";
 import { Enemy } from "../Common/Enemy/Enemy";
 import { Character } from "../Common/Types";
@@ -8,43 +8,85 @@ import { CombatLog } from "../CombatLog/CombatLog";
 interface BattlefieldProps {
   enemy: Character;
   player: Character;
-  roll20?: () => number;
-  roll4?: () => number;
+  roll20Enemy?: () => number;
+  roll4Enemy?: () => number;
+  roll20Player?: () => number;
+  roll4Player?: () => number;
 }
 
-function Battlefield({ enemy, player, roll20, roll4 }: BattlefieldProps) {
-  const [life, setLife] = useState(enemy.life);
+function Battlefield({
+  enemy,
+  player,
+  roll20Enemy,
+  roll4Enemy,
+  roll20Player,
+  roll4Player,
+}: BattlefieldProps) {
+  const [enemyLife, setEnemyLife] = useState(enemy.life);
   const [messages, setMessages] = useState<string[]>([]);
+  const [playerLife, setPlayerLife] = useState(player.life);
+  const [enemyTurn, setEnemyTurn] = useState(false);
+
+  useEffect(() => {
+    if (enemyTurn) {
+      const damageToPlayer = resolveCombat(
+        enemy.strength,
+        player.dexterity,
+        roll20Player,
+        roll4Player
+      );
+      setPlayerLife(playerLife - damageToPlayer);
+      if (damageToPlayer) {
+        setMessages([
+          ...messages,
+          "Turno del enemigo",
+          `Ataque exitoso del enemigo, ${damageToPlayer} puntos de daño`,
+        ]);
+        setEnemyTurn(false);
+      } else {
+        setMessages([
+          ...messages,
+          "Turno del enemigo",
+          "Ataque fallido del enemigo",
+        ]);
+        setEnemyTurn(false);
+      }
+    } else {
+      setMessages([...messages, "Turno del jugador"]);
+    }
+  }, [enemyTurn]);
+
   return (
     <>
       <Enemy
         onClickEnemy={() => {
-          const damage = resolveCombat(
+          const damageToEnemy = resolveCombat(
             player.strength,
             enemy.dexterity,
-            roll20,
-            roll4
+            roll20Enemy,
+            roll4Enemy
           );
-          setLife(life - damage);
-          if (damage) {
+          setEnemyLife(enemyLife - damageToEnemy);
+          if (damageToEnemy) {
             setMessages([
               ...messages,
-              `Ataque exitoso, ${damage} puntos de daño`,
+              `Ataque exitoso del jugador, ${damageToEnemy} puntos de daño`,
             ]);
           } else {
-            setMessages([...messages, "Ataque fallido"]);
+            setMessages([...messages, "Ataque fallido del jugador"]);
           }
+          setEnemyTurn(true);
         }}
         name={enemy.name}
         srcImg={enemy.srcImg}
-        life={life}
+        life={enemyLife}
         strength={enemy.strength}
         dexterity={enemy.dexterity}
       />
       <Player
         name={player.name}
         srcImg={player.srcImg}
-        life={player.life}
+        life={playerLife}
         strength={player.strength}
         dexterity={player.dexterity}
       />
