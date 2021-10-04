@@ -159,3 +159,35 @@ describe("Combat works correctly", () => {
     expect(attackEnemyMessage).toBeInTheDocument();
   });
 });
+
+describe("Combat ends correctly", () => {
+  it("Player wins", () => {
+    Setup(
+      () => 12,
+      () => 3,
+      () => 8,
+      () => 3
+    );
+    const enemyButton = screen.getByRole("button", { name: enemy.name });
+    for (let index = 0; index < 6; index++) {
+      userEvent.click(enemyButton);
+    }
+    const enemyLife = getByText(enemyButton, /vida: 0/i);
+    expect(enemyLife).toBeInTheDocument();
+  });
+  it("Player lose", () => {
+    Setup(
+      () => 8,
+      () => 2,
+      () => 16,
+      () => 3
+    );
+    const enemyButton = screen.getByRole("button", { name: enemy.name });
+    for (let index = 0; index < 10; index++) {
+      userEvent.click(enemyButton);
+    }
+    const playerElement = screen.getByTestId("playerSection");
+    const playerLife = getByText(playerElement, /vida: 0/i);
+    expect(playerLife).toBeInTheDocument();
+  });
+});
