@@ -37,8 +37,8 @@ function Battlefield({
         roll20Player,
         roll4Player
       );
-      const playerResultLife = playerLife > 0 ? playerLife - damageToPlayer : 0;
-      setPlayerLife(playerResultLife);
+      const playerResultLife = playerLife - damageToPlayer;
+      setPlayerLife(playerResultLife > 0 ? playerResultLife : 0);
       if (damageToPlayer) {
         setMessages([
           ...messages,
@@ -69,8 +69,8 @@ function Battlefield({
             roll20Enemy,
             roll4Enemy
           );
-          const enemyResultLife = enemyLife > 0 ? enemyLife - damageToEnemy : 0;
-          setEnemyLife(enemyResultLife);
+          const enemyResultLife = enemyLife - damageToEnemy;
+          setEnemyLife(enemyResultLife > 0 ? enemyResultLife : 0);
           if (damageToEnemy) {
             setMessages([
               ...messages,
