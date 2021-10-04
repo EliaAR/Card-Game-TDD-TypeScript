@@ -19,37 +19,143 @@ const player: Character = {
   srcImg: "https://via.placeholder.com/150",
 };
 
-function Setup(mock20: () => number, mock4: () => number) {
+function Setup(
+  mock20Enemy: () => number,
+  mock4Enemy: () => number,
+  mock20Player: () => number,
+  mock4Player: () => number
+) {
   return render(
-    <Battlefield enemy={enemy} player={player} roll20={mock20} roll4={mock4} />
+    <Battlefield
+      enemy={enemy}
+      player={player}
+      roll20Enemy={mock20Enemy}
+      roll4Enemy={mock4Enemy}
+      roll20Player={mock20Player}
+      roll4Player={mock4Player}
+    />
   );
 }
 
-describe("when click on enemy action attack is performed correctly", () => {
-  it("when attack hits life changes and is registered in CombatLog", () => {
+describe("Combat works correctly", () => {
+  it("Player and enemy hits, life changes and is registered in CombatLog", () => {
     Setup(
       () => 12,
+      () => 2,
+      () => 16,
       () => 2
     );
-    const button = screen.getByRole("button", { name: enemy.name });
-    userEvent.click(button);
-    const life = getByText(button, /vida: 25/i);
     const log = screen.getByRole("log");
-    const message = getByText(log, /ataque exitoso, 5 puntos de daño/i);
-    expect(life).toBeInTheDocument();
-    expect(message).toBeInTheDocument();
+    const turnPlayerMessage = getByText(log, /turno del jugador/i);
+    expect(turnPlayerMessage).toBeInTheDocument();
+
+    const enemyButton = screen.getByRole("button", { name: enemy.name });
+    userEvent.click(enemyButton);
+    const enemyLife = getByText(enemyButton, /vida: 25/i);
+    const attackPlayerMessage = getByText(
+      log,
+      /ataque exitoso, 5 puntos de daño/i
+    );
+    expect(enemyLife).toBeInTheDocument();
+    expect(attackPlayerMessage).toBeInTheDocument();
+
+    const turnEnemyMessage = getByText(log, /turno del enemigo/i);
+    expect(turnEnemyMessage).toBeInTheDocument();
+
+    const playerElement = screen.getByTestId("playerSection");
+    const playerLife = getByText(playerElement, /vida: 45/i);
+    const attackEnemyMessage = getByText(
+      log,
+      /ataque exitoso, 5 puntos de daño/i
+    );
+    expect(playerLife).toBeInTheDocument();
+    expect(attackEnemyMessage).toBeInTheDocument();
   });
-  it("attack failed and is registered in CombatLog", () => {
+  it("Player hits, enemy fails, life changes and is registered in CombatLog", () => {
     Setup(
+      () => 12,
+      () => 2,
       () => 8,
       () => 2
     );
-    const button = screen.getByRole("button", { name: enemy.name });
-    userEvent.click(button);
-    const life = getByText(button, /vida: 30/i);
     const log = screen.getByRole("log");
-    const message = getByText(log, /ataque fallido/i);
-    expect(life).toBeInTheDocument();
-    expect(message).toBeInTheDocument();
+    const turnPlayerMessage = getByText(log, /turno del jugador/i);
+    expect(turnPlayerMessage).toBeInTheDocument();
+
+    const enemyButton = screen.getByRole("button", { name: enemy.name });
+    userEvent.click(enemyButton);
+    const enemyLife = getByText(enemyButton, /vida: 25/i);
+    const attackPlayerMessage = getByText(
+      log,
+      /ataque exitoso, 5 puntos de daño/i
+    );
+    expect(enemyLife).toBeInTheDocument();
+    expect(attackPlayerMessage).toBeInTheDocument();
+
+    const turnEnemyMessage = getByText(log, /turno del enemigo/i);
+    expect(turnEnemyMessage).toBeInTheDocument();
+
+    const playerElement = screen.getByTestId("playerSection");
+    const playerLife = getByText(playerElement, /vida: 50/i);
+    const attackEnemyMessage = getByText(log, /ataque fallido/i);
+    expect(playerLife).toBeInTheDocument();
+    expect(attackEnemyMessage).toBeInTheDocument();
+  });
+  it("Player fails, enemy hits, life changes and is registered in CombatLog", () => {
+    Setup(
+      () => 8,
+      () => 2,
+      () => 16,
+      () => 2
+    );
+    const log = screen.getByRole("log");
+    const turnPlayerMessage = getByText(log, /turno del jugador/i);
+    expect(turnPlayerMessage).toBeInTheDocument();
+
+    const enemyButton = screen.getByRole("button", { name: enemy.name });
+    userEvent.click(enemyButton);
+    const enemyLife = getByText(enemyButton, /vida: 30/i);
+    const attackPlayerMessage = getByText(log, /ataque fallido/i);
+    expect(enemyLife).toBeInTheDocument();
+    expect(attackPlayerMessage).toBeInTheDocument();
+
+    const turnEnemyMessage = getByText(log, /turno del enemigo/i);
+    expect(turnEnemyMessage).toBeInTheDocument();
+
+    const playerElement = screen.getByTestId("playerSection");
+    const playerLife = getByText(playerElement, /vida: 45/i);
+    const attackEnemyMessage = getByText(
+      log,
+      /ataque exitoso, 5 puntos de daño/i
+    );
+    expect(playerLife).toBeInTheDocument();
+    expect(attackEnemyMessage).toBeInTheDocument();
+  });
+  it("Player and enemy fail and is registered in CombatLog", () => {
+    Setup(
+      () => 8,
+      () => 2,
+      () => 16,
+      () => 2
+    );
+    const log = screen.getByRole("log");
+    const turnPlayerMessage = getByText(log, /turno del jugador/i);
+    expect(turnPlayerMessage).toBeInTheDocument();
+
+    const enemyButton = screen.getByRole("button", { name: enemy.name });
+    userEvent.click(enemyButton);
+    const enemyLife = getByText(enemyButton, /vida: 30/i);
+    const attackPlayerMessage = getByText(log, /ataque fallido/i);
+    expect(enemyLife).toBeInTheDocument();
+    expect(attackPlayerMessage).toBeInTheDocument();
+
+    const turnEnemyMessage = getByText(log, /turno del enemigo/i);
+    expect(turnEnemyMessage).toBeInTheDocument();
+
+    const playerElement = screen.getByTestId("playerSection");
+    const playerLife = getByText(playerElement, /vida: 50/i);
+    const attackEnemyMessage = getByText(log, /ataque fallido/i);
+    expect(playerLife).toBeInTheDocument();
+    expect(attackEnemyMessage).toBeInTheDocument();
   });
 });
