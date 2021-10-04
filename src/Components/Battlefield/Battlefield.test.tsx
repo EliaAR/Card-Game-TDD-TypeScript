@@ -25,16 +25,19 @@ function Setup(
   mock20Player: () => number,
   mock4Player: () => number
 ) {
-  return render(
+  const mockOnCombatFinish = jest.fn();
+  render(
     <Battlefield
       enemy={enemy}
       player={player}
+      onCombatFinish={mockOnCombatFinish}
       roll20Enemy={mock20Enemy}
       roll4Enemy={mock4Enemy}
       roll20Player={mock20Player}
       roll4Player={mock4Player}
     />
   );
+  return mockOnCombatFinish;
 }
 
 describe("Combat works correctly", () => {
@@ -162,7 +165,7 @@ describe("Combat works correctly", () => {
 
 describe("Combat ends correctly", () => {
   it("Player wins", () => {
-    Setup(
+    const finishMock = Setup(
       () => 12,
       () => 3,
       () => 8,
@@ -174,9 +177,10 @@ describe("Combat ends correctly", () => {
     }
     const enemyLife = getByText(enemyButton, /vida: 0/i);
     expect(enemyLife).toBeInTheDocument();
+    expect(finishMock).toBeCalledWith("win");
   });
   it("Player lose", () => {
-    Setup(
+    const finishMock = Setup(
       () => 8,
       () => 2,
       () => 16,
@@ -189,5 +193,6 @@ describe("Combat ends correctly", () => {
     const playerElement = screen.getByTestId("playerSection");
     const playerLife = getByText(playerElement, /vida: 0/i);
     expect(playerLife).toBeInTheDocument();
+    expect(finishMock).toBeCalledWith("lose");
   });
 });
