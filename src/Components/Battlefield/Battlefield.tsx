@@ -59,6 +59,15 @@ function Battlefield({
     }
   }, [enemyTurn]);
 
+  useEffect(() => {
+    if (!playerLife) {
+      onCombatFinish("lose");
+    }
+    if (!enemyLife) {
+      onCombatFinish("win");
+    }
+  }, [playerLife, enemyLife, onCombatFinish]);
+
   return (
     <>
       <Enemy
