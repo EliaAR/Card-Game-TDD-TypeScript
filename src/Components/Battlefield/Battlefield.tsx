@@ -8,6 +8,7 @@ import { CombatLog } from "../CombatLog/CombatLog";
 interface BattlefieldProps {
   enemy: Character;
   player: Character;
+  onCombatFinish: (result: "win" | "lose") => void;
   roll20Enemy?: () => number;
   roll4Enemy?: () => number;
   roll20Player?: () => number;
@@ -17,6 +18,7 @@ interface BattlefieldProps {
 function Battlefield({
   enemy,
   player,
+  onCombatFinish,
   roll20Enemy,
   roll4Enemy,
   roll20Player,
@@ -35,7 +37,8 @@ function Battlefield({
         roll20Player,
         roll4Player
       );
-      setPlayerLife(playerLife - damageToPlayer);
+      const playerResultLife = playerLife > 0 ? playerLife - damageToPlayer : 0;
+      setPlayerLife(playerResultLife);
       if (damageToPlayer) {
         setMessages([
           ...messages,
@@ -66,7 +69,8 @@ function Battlefield({
             roll20Enemy,
             roll4Enemy
           );
-          setEnemyLife(enemyLife - damageToEnemy);
+          const enemyResultLife = enemyLife > 0 ? enemyLife - damageToEnemy : 0;
+          setEnemyLife(enemyResultLife);
           if (damageToEnemy) {
             setMessages([
               ...messages,
