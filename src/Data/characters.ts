@@ -2,28 +2,28 @@ import { Character } from "../Components/Common/Types";
 
 const enemy: Character[] = [
   {
-    name: "pendiente",
+    name: "Elfo 1",
     srcImg: "https://via.placeholder.com/150",
     life: 20,
     strength: 15,
     dexterity: 14,
   },
   {
-    name: "pendiente",
+    name: "Humano 2",
     srcImg: "https://via.placeholder.com/150",
     life: 32,
     strength: 12,
     dexterity: 14,
   },
   {
-    name: "pendiente",
+    name: "Enano 3",
     srcImg: "https://via.placeholder.com/150",
     life: 42,
-    strength: 18,
-    dexterity: 16,
+    strength: 15,
+    dexterity: 15,
   },
   {
-    name: "pendiente",
+    name: "Mediano 4",
     srcImg: "https://via.placeholder.com/150",
     life: 57,
     strength: 17,
