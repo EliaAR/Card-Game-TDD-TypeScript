@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { Player } from "../Common/Player/Player";
-import { Enemy } from "../Common/Enemy/Enemy";
+import { Player } from "../Player/Player";
+import { Enemy } from "../Enemy/Enemy";
 import { Character } from "../Common/Types";
 import { resolveCombat } from "../../Utils/resolveCombat";
 import { CombatLog } from "../CombatLog/CombatLog";

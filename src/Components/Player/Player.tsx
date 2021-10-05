@@ -1,4 +1,4 @@
-import { Character } from "../Types";
+import { Character } from "../Common/Types";
 
 interface PlayerProps extends Character {}
 
