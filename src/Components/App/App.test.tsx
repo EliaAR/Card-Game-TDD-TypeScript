@@ -1,19 +1,38 @@
 import { render, screen, getByText } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { App } from "./App";
+import { Character } from "../Common/Types";
+
+const enemy: Character[] = new Array(4).fill({
+  name: "erPatriarca",
+  srcImg: "https://via.placeholder.com/150",
+  life: 20,
+  strength: 18,
+  dexterity: 14,
+});
+
+const player: Character[] = new Array(4).fill({
+  name: "laObrera",
+  srcImg: "https://via.placeholder.com/150",
+  life: 20,
+  strength: 18,
+  dexterity: 14,
+});
 
 function Setup(
-  mock20Enemy: () => number,
-  mock4Enemy: () => number,
-  mock20Player: () => number,
-  mock4Player: () => number
+  roll20Enemy: () => number,
+  roll4Enemy: () => number,
+  roll20Player: () => number,
+  roll4Player: () => number
 ) {
   return render(
     <App
-      roll20Enemy={mock20Enemy}
-      roll4Enemy={mock4Enemy}
-      roll20Player={mock20Player}
-      roll4Player={mock4Player}
+      mock20Enemy={roll20Enemy}
+      mock4Enemy={roll4Enemy}
+      mock20Player={roll20Player}
+      mock4Player={roll4Player}
+      mockEnemy={enemy}
+      mockPlayer={player}
     />
   );
 }
@@ -26,7 +45,7 @@ describe("Combat ends correctly", () => {
       () => 8,
       () => 3
     );
-    const enemyButton = screen.getByRole("button", { name: "pendiente" });
+    const enemyButton = screen.getByRole("button", { name: enemy[0].name });
     for (let index = 0; index < 6; index++) {
       userEvent.click(enemyButton);
     }
@@ -38,7 +57,7 @@ describe("Combat ends correctly", () => {
     });
     userEvent.click(playButton);
     const playerElement = screen.getByTestId("playerSection");
-    const playerName = getByText(playerElement, /pendienta/i);
+    const playerName = getByText(playerElement, player[0].name);
     expect(playerName).toBeInTheDocument();
   });
   it("Player lose", () => {
@@ -48,7 +67,7 @@ describe("Combat ends correctly", () => {
       () => 16,
       () => 3
     );
-    const enemyButton = screen.getByRole("button", { name: "pendiente" });
+    const enemyButton = screen.getByRole("button", { name: enemy[0].name });
     for (let index = 0; index < 10; index++) {
       userEvent.click(enemyButton);
     }
@@ -60,7 +79,7 @@ describe("Combat ends correctly", () => {
     });
     userEvent.click(playButton);
     const playerElement = screen.getByTestId("playerSection");
-    const playerName = getByText(playerElement, /pendienta/i);
+    const playerName = getByText(playerElement, player[0].name);
     expect(playerName).toBeInTheDocument();
   });
   it("Player wins the game", () => {
@@ -71,7 +90,7 @@ describe("Combat ends correctly", () => {
       () => 3
     );
     for (let i = 0; i < 4; i++) {
-      const enemyButton = screen.getByRole("button", { name: "pendiente" });
+      const enemyButton = screen.getByRole("button", { name: enemy[0].name });
       for (let j = 0; j < 6; j++) {
         userEvent.click(enemyButton);
       }
@@ -90,7 +109,7 @@ describe("Combat ends correctly", () => {
     });
     userEvent.click(playFinalButton);
     const playerElement = screen.getByTestId("playerSection");
-    const playerName = getByText(playerElement, /pendienta/i);
+    const playerName = getByText(playerElement, player[0].name);
     expect(playerName).toBeInTheDocument();
   });
 });
