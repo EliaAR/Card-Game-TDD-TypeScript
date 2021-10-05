@@ -88,6 +88,9 @@ describe("Combat ends correctly", () => {
     const playFinalButton = screen.getByRole("button", {
       name: "Volver a jugar",
     });
-    expect(playFinalButton).toBeInTheDocument();
+    userEvent.click(playFinalButton);
+    const playerElement = screen.getByTestId("playerSection");
+    const playerName = getByText(playerElement, /pendienta/i);
+    expect(playerName).toBeInTheDocument();
   });
 });
