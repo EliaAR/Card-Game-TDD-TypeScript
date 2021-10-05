@@ -30,8 +30,14 @@ describe("Combat ends correctly", () => {
     for (let index = 0; index < 6; index++) {
       userEvent.click(enemyButton);
     }
-    const winMsg = screen.getByText(/has ganado!!/i);
+    const winMsg = screen.getByText(/victoria!! has alcanzado el nivel 2/i);
     expect(winMsg).toBeInTheDocument();
+
+    const playButton = screen.getByRole("button", { name: "Volver a jugar" });
+    userEvent.click(playButton);
+    const playerElement = screen.getByTestId("playerSection");
+    const playerName = getByText(playerElement, /pendienta/i);
+    expect(playerName).toBeInTheDocument();
   });
   it("Player lose", () => {
     Setup(
@@ -46,5 +52,31 @@ describe("Combat ends correctly", () => {
     }
     const loseMsg = screen.getByText(/has perdido 😢/i);
     expect(loseMsg).toBeInTheDocument();
+
+    const playButton = screen.getByRole("button", { name: "Volver a jugar" });
+    userEvent.click(playButton);
+    const playerElement = screen.getByTestId("playerSection");
+    const playerName = getByText(playerElement, /pendienta/i);
+    expect(playerName).toBeInTheDocument();
+  });
+  it("Player wins the game", () => {
+    Setup(
+      () => 12,
+      () => 3,
+      () => 8,
+      () => 3
+    );
+    for (let index = 0; index < 4; index++) {
+      const enemyButton = screen.getByRole("button", { name: "pendiente" });
+      for (let index = 0; index < 6; index++) {
+        userEvent.click(enemyButton);
+      }
+      const playButton = screen.getByRole("button", {
+        name: "Volver a jugar",
+      });
+      userEvent.click(playButton);
+    }
+    const winGameMsg = screen.getByText(/has completado el juego!!/i);
+    expect(winGameMsg).toBeInTheDocument();
   });
 });
