@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Battlefield } from "../Battlefield/Battlefield";
 import { player, enemy } from "../../Data/characters";
-import "./App.css";
 import { Character } from "../Common/Types";
+import "./App.css";
 
 type Screens = "win-battle" | "win-game" | "lose" | "battle";
 
