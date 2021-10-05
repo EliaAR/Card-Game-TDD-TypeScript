@@ -1,33 +1,28 @@
 import { useState } from "react";
-import { Character } from "../Common/Types";
 import { Battlefield } from "../Battlefield/Battlefield";
+import { player, enemy } from "../../Data/characters";
 import "./App.css";
+import { Character } from "../Common/Types";
 
 type Screens = "win-battle" | "win-game" | "lose" | "battle";
 
-const elf: Character = {
-  name: "pendiente",
-  srcImg: "https://via.placeholder.com/150",
-  life: 20,
-  strength: 18,
-  dexterity: 14,
-};
-const orc: Character = {
-  name: "pendienta",
-  srcImg: "https://via.placeholder.com/150",
-  life: 20,
-  strength: 18,
-  dexterity: 14,
-};
-
 interface AppProps {
-  roll20Enemy?: () => number;
-  roll4Enemy?: () => number;
-  roll20Player?: () => number;
-  roll4Player?: () => number;
+  mock20Enemy?: () => number;
+  mock4Enemy?: () => number;
+  mock20Player?: () => number;
+  mock4Player?: () => number;
+  mockEnemy?: Character[];
+  mockPlayer?: Character[];
 }
 
-function App({ roll20Enemy, roll4Enemy, roll20Player, roll4Player }: AppProps) {
+function App({
+  mock20Enemy,
+  mock4Enemy,
+  mock20Player,
+  mock4Player,
+  mockEnemy,
+  mockPlayer,
+}: AppProps) {
   const [screen, setScreen] = useState<Screens>("battle");
   const [level, setLevel] = useState(1);
 
@@ -55,8 +50,8 @@ function App({ roll20Enemy, roll4Enemy, roll20Player, roll4Player }: AppProps) {
   } else {
     return (
       <Battlefield
-        enemy={elf}
-        player={orc}
+        enemy={mockEnemy ? mockEnemy[level - 1] : enemy[level - 1]}
+        player={mockPlayer ? mockPlayer[level - 1] : player[level - 1]}
         onCombatFinish={(combatResult) => {
           if (combatResult === "win" && level < 4) {
             setScreen("win-battle");
@@ -68,10 +63,10 @@ function App({ roll20Enemy, roll4Enemy, roll20Player, roll4Player }: AppProps) {
             setScreen("lose");
           }
         }}
-        roll20Enemy={roll20Enemy}
-        roll4Enemy={roll4Enemy}
-        roll20Player={roll20Player}
-        roll4Player={roll4Player}
+        roll20Enemy={mock20Enemy}
+        roll4Enemy={mock4Enemy}
+        roll20Player={mock20Player}
+        roll4Player={mock4Player}
       />
     );
   }
