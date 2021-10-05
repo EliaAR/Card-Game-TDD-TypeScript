@@ -75,14 +75,19 @@ describe("Combat ends correctly", () => {
       for (let j = 0; j < 6; j++) {
         userEvent.click(enemyButton);
       }
-      const playButton = screen.getByRole("button", {
-        name: "Volver a jugar",
-      });
       if (i < 3) {
+        const playButton = screen.getByRole("button", {
+          name: "Continuar jugando",
+        });
         userEvent.click(playButton);
       }
     }
     const winGameMsg = screen.getByText(/has completado el juego!!/i);
     expect(winGameMsg).toBeInTheDocument();
+
+    const playFinalButton = screen.getByRole("button", {
+      name: "Volver a jugar",
+    });
+    expect(playFinalButton).toBeInTheDocument();
   });
 });
