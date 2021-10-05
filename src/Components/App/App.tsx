@@ -3,7 +3,7 @@ import { Character } from "../Common/Types";
 import { Battlefield } from "../Battlefield/Battlefield";
 import "./App.css";
 
-type Screens = "win" | "lose" | "battle";
+type Screens = "win-battle" | "win-game" | "lose" | "battle";
 
 const elf: Character = {
   name: "pendiente",
@@ -29,18 +29,26 @@ interface AppProps {
 
 function App({ roll20Enemy, roll4Enemy, roll20Player, roll4Player }: AppProps) {
   const [screen, setScreen] = useState<Screens>("battle");
+  const [level, setLevel] = useState(1);
 
-  if (screen === "win") {
+  if (screen === "win-battle") {
     return (
       <>
-        <p>Has ganado!!</p>
-        <button onClick={() => setScreen("battle")}>Volver a jugar</button>
+        <p>Victoria!! Has alcanzado el nivel {level}</p>
+        <button onClick={() => setScreen("battle")}>Continuar jugando</button>
       </>
     );
   } else if (screen === "lose") {
     return (
       <>
         <p>Has perdido 😢</p>
+        <button onClick={() => setScreen("battle")}>Intentarlo de nuevo</button>
+      </>
+    );
+  } else if (screen === "win-game") {
+    return (
+      <>
+        <p>Has completado el juego!!</p>
         <button onClick={() => setScreen("battle")}>Volver a jugar</button>
       </>
     );
@@ -50,8 +58,12 @@ function App({ roll20Enemy, roll4Enemy, roll20Player, roll4Player }: AppProps) {
         enemy={elf}
         player={orc}
         onCombatFinish={(combatResult) => {
-          if (combatResult === "win") {
-            setScreen("win");
+          if (combatResult === "win" && level < 4) {
+            setScreen("win-battle");
+            setLevel(level + 1);
+          } else if (combatResult === "win" && level === 4) {
+            setScreen("win-game");
+            setLevel(1);
           } else {
             setScreen("lose");
           }
