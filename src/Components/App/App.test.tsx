@@ -90,6 +90,8 @@ describe("Combat ends correctly", () => {
       () => 3
     );
     for (let i = 0; i < 4; i++) {
+      const dungeonLevel = screen.getByText(`Mazmorra ${i + 1}`);
+      expect(dungeonLevel).toBeInTheDocument();
       const enemyButton = screen.getByRole("button", { name: enemy[0].name });
       for (let j = 0; j < 6; j++) {
         userEvent.click(enemyButton);
