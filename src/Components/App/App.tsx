@@ -52,6 +52,7 @@ function App({
       <Battlefield
         enemy={mockEnemy ? mockEnemy[level - 1] : enemy[level - 1]}
         player={mockPlayer ? mockPlayer[level - 1] : player[level - 1]}
+        level={level}
         onCombatFinish={(combatResult) => {
           if (combatResult === "win" && level < 4) {
             setScreen("win-battle");

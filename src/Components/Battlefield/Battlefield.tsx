@@ -8,6 +8,7 @@ import { CombatLog } from "../CombatLog/CombatLog";
 interface BattlefieldProps {
   enemy: Character;
   player: Character;
+  level: number;
   onCombatFinish: (result: "win" | "lose") => void;
   roll20Enemy?: () => number;
   roll4Enemy?: () => number;
@@ -18,6 +19,7 @@ interface BattlefieldProps {
 function Battlefield({
   enemy,
   player,
+  level,
   onCombatFinish,
   roll20Enemy,
   roll4Enemy,
@@ -70,6 +72,7 @@ function Battlefield({
 
   return (
     <>
+      <h1>Mazmorra {level}</h1>
       <Enemy
         onClickEnemy={() => {
           const damageToEnemy = resolveCombat(
