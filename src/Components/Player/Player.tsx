@@ -5,7 +5,7 @@ interface PlayerProps extends Character {}
 
 function Player({ name, srcImg, life, strength, dexterity }: PlayerProps) {
   return (
-    <section data-testid="playerSection" className="player">
+    <article data-testid="playerSection" className="player">
       <article>
         <p className="player__name">{name}</p>
         <img src={srcImg} alt={`Imagen ${name}`} />
@@ -15,7 +15,7 @@ function Player({ name, srcImg, life, strength, dexterity }: PlayerProps) {
         <p>Fuerza: {strength} </p>
         <p>Destreza: {dexterity} </p>
       </article>
-    </section>
+    </article>
   );
 }
 

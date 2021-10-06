@@ -74,40 +74,46 @@ function Battlefield({
   return (
     <main className="main">
       <h1 className="main__tittle">Mazmorra {level}</h1>
-      <Enemy
-        onClickEnemy={() => {
-          const damageToEnemy = resolveCombat(
-            player.strength,
-            enemy.dexterity,
-            mockRoll20Enemy,
-            mockRoll4Enemy
-          );
-          const enemyResultLife = enemyLife - damageToEnemy;
-          setEnemyLife(enemyResultLife > 0 ? enemyResultLife : 0);
-          if (damageToEnemy) {
-            setMessages([
-              ...messages,
-              `Ataque exitoso del jugador, ${damageToEnemy} puntos de daño`,
-            ]);
-          } else {
-            setMessages([...messages, "Ataque fallido del jugador"]);
-          }
-          setEnemyTurn(true);
-        }}
-        name={enemy.name}
-        srcImg={enemy.srcImg}
-        life={enemyLife}
-        strength={enemy.strength}
-        dexterity={enemy.dexterity}
-      />
-      <Player
-        name={player.name}
-        srcImg={player.srcImg}
-        life={playerLife}
-        strength={player.strength}
-        dexterity={player.dexterity}
-      />
-      <CombatLog messages={messages} />
+      <section className="main__container">
+        <section className="main__charactersContainer">
+          <Enemy
+            onClickEnemy={() => {
+              const damageToEnemy = resolveCombat(
+                player.strength,
+                enemy.dexterity,
+                mockRoll20Enemy,
+                mockRoll4Enemy
+              );
+              const enemyResultLife = enemyLife - damageToEnemy;
+              setEnemyLife(enemyResultLife > 0 ? enemyResultLife : 0);
+              if (damageToEnemy) {
+                setMessages([
+                  ...messages,
+                  `Ataque exitoso del jugador, ${damageToEnemy} puntos de daño`,
+                ]);
+              } else {
+                setMessages([...messages, "Ataque fallido del jugador"]);
+              }
+              setEnemyTurn(true);
+            }}
+            name={enemy.name}
+            srcImg={enemy.srcImg}
+            life={enemyLife}
+            strength={enemy.strength}
+            dexterity={enemy.dexterity}
+          />
+          <Player
+            name={player.name}
+            srcImg={player.srcImg}
+            life={playerLife}
+            strength={player.strength}
+            dexterity={player.dexterity}
+          />
+        </section>
+        <section className="main__combatlogContainer">
+          <CombatLog messages={messages} />
+        </section>
+      </section>
     </main>
   );
 }

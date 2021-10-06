@@ -14,7 +14,7 @@ function Enemy({
   dexterity,
 }: EnemyProps) {
   return (
-    <section
+    <article
       onClick={onClickEnemy}
       role="button"
       aria-label={name}
@@ -29,7 +29,7 @@ function Enemy({
         <p>Fuerza: {strength} </p>
         <p>Destreza: {dexterity} </p>
       </article>
-    </section>
+    </article>
   );
 }
 
