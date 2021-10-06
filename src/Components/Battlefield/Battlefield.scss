@@ -1,5 +1,17 @@
 .main {
   &__tittle {
+    background-color: #030201;
+    text-align: center;
     font-family: "heroquest";
+    color: white;
+  }
+  &__container {
+    display: grid;
+    grid-template-columns: 70% 30%;
+  }
+  &__charactersContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
   }
 }

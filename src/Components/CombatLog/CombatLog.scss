@@ -1,0 +1,13 @@
+.combatLog {
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.65);
+
+  &__tittle {
+    font-family: "caxton";
+    font-weight: bold;
+  }
+  &__msg {
+    font-family: "caslon-antique.regular";
+    list-style: none;
+  }
+}

@@ -16,3 +16,11 @@
   src: local("zapf-chancery"),
     url("./Fonts/zapf-chancery.ttf") format("truetype");
 }
+@font-face {
+  font-family: "breathe-fire";
+  src: local("breathe-fire"), url("./Fonts/breathe-fire.otf") format("opentype");
+}
+@font-face {
+  font-family: "caxton";
+  src: local("caxton"), url("./Fonts/caxton.ttf") format("opentype");
+}

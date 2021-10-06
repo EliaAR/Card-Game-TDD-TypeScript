@@ -1,8 +1,11 @@
 .player {
+  margin-top: 10px;
   &__name {
-    font-family: "gaze";
+    font-family: "breathe-fire";
+    font-weight: bold;
+    text-transform: capitalize;
   }
   &__statsContainer {
-    font-family: "caslon-antique.regular";
+    font-family: "gaze";
   }
 }
