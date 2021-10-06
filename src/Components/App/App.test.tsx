@@ -20,17 +20,17 @@ const player: Character[] = new Array(4).fill({
 });
 
 function Setup(
-  roll20Enemy: () => number,
-  roll4Enemy: () => number,
-  roll20Player: () => number,
-  roll4Player: () => number
+  mockRoll20Enemy: () => number,
+  mockRoll4Enemy: () => number,
+  mockRoll20Player: () => number,
+  mockRoll4Player: () => number
 ) {
   return render(
     <App
-      mock20Enemy={roll20Enemy}
-      mock4Enemy={roll4Enemy}
-      mock20Player={roll20Player}
-      mock4Player={roll4Player}
+      mockRoll20Enemy={mockRoll20Enemy}
+      mockRoll4Enemy={mockRoll4Enemy}
+      mockRoll20Player={mockRoll20Player}
+      mockRoll4Player={mockRoll4Player}
       mockEnemy={enemy}
       mockPlayer={player}
     />

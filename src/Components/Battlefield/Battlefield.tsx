@@ -10,10 +10,10 @@ interface BattlefieldProps {
   player: Character;
   level: number;
   onCombatFinish: (result: "win" | "lose") => void;
-  roll20Enemy?: () => number;
-  roll4Enemy?: () => number;
-  roll20Player?: () => number;
-  roll4Player?: () => number;
+  mockRoll20Enemy?: () => number;
+  mockRoll4Enemy?: () => number;
+  mockRoll20Player?: () => number;
+  mockRoll4Player?: () => number;
 }
 
 function Battlefield({
@@ -21,10 +21,10 @@ function Battlefield({
   player,
   level,
   onCombatFinish,
-  roll20Enemy,
-  roll4Enemy,
-  roll20Player,
-  roll4Player,
+  mockRoll20Enemy,
+  mockRoll4Enemy,
+  mockRoll20Player,
+  mockRoll4Player,
 }: BattlefieldProps) {
   const [enemyLife, setEnemyLife] = useState(enemy.life);
   const [messages, setMessages] = useState<string[]>([]);
@@ -36,8 +36,8 @@ function Battlefield({
       const damageToPlayer = resolveCombat(
         enemy.strength,
         player.dexterity,
-        roll20Player,
-        roll4Player
+        mockRoll20Player,
+        mockRoll4Player
       );
       const playerResultLife = playerLife - damageToPlayer;
       setPlayerLife(playerResultLife > 0 ? playerResultLife : 0);
@@ -78,8 +78,8 @@ function Battlefield({
           const damageToEnemy = resolveCombat(
             player.strength,
             enemy.dexterity,
-            roll20Enemy,
-            roll4Enemy
+            mockRoll20Enemy,
+            mockRoll4Enemy
           );
           const enemyResultLife = enemyLife - damageToEnemy;
           setEnemyLife(enemyResultLife > 0 ? enemyResultLife : 0);

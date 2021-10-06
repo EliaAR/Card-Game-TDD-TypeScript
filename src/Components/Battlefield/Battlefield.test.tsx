@@ -20,21 +20,22 @@ const player: Character = {
 };
 
 function Setup(
-  mock20Enemy: () => number,
-  mock4Enemy: () => number,
-  mock20Player: () => number,
-  mock4Player: () => number
+  mockRoll20Enemy: () => number,
+  mockRoll4Enemy: () => number,
+  mockRoll20Player: () => number,
+  mockRoll4Player: () => number
 ) {
   const mockOnCombatFinish = jest.fn();
   render(
     <Battlefield
       enemy={enemy}
       player={player}
+      level={4}
       onCombatFinish={mockOnCombatFinish}
-      roll20Enemy={mock20Enemy}
-      roll4Enemy={mock4Enemy}
-      roll20Player={mock20Player}
-      roll4Player={mock4Player}
+      mockRoll20Enemy={mockRoll20Enemy}
+      mockRoll4Enemy={mockRoll4Enemy}
+      mockRoll20Player={mockRoll20Player}
+      mockRoll4Player={mockRoll4Player}
     />
   );
   return mockOnCombatFinish;
