@@ -1,4 +1,5 @@
 import { Character } from "../Common/Types";
+import "./enemy.scss";
 
 interface EnemyProps extends Character {
   onClickEnemy: React.MouseEventHandler<HTMLElement>;
@@ -13,12 +14,17 @@ function Enemy({
   dexterity,
 }: EnemyProps) {
   return (
-    <section onClick={onClickEnemy} role="button" aria-label={name}>
+    <section
+      onClick={onClickEnemy}
+      role="button"
+      aria-label={name}
+      className="enemy"
+    >
       <article>
-        <p>{name}</p>
+        <p className="enemy__name">{name}</p>
         <img src={srcImg} alt={`Imagen ${name}`} />
       </article>
-      <article>
+      <article className="enemy__statsContainer">
         <p>Vida: {life} </p>
         <p>Fuerza: {strength} </p>
         <p>Destreza: {dexterity} </p>
