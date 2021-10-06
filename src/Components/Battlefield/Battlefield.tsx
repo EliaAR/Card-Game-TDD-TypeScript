@@ -4,6 +4,7 @@ import { Enemy } from "../Enemy/Enemy";
 import { Character } from "../Common/Types";
 import { resolveCombat } from "../../Utils/resolveCombat";
 import { CombatLog } from "../CombatLog/CombatLog";
+import "./Battlefield.scss";
 
 interface BattlefieldProps {
   enemy: Character;
@@ -71,8 +72,8 @@ function Battlefield({
   }, [playerLife, enemyLife, onCombatFinish]);
 
   return (
-    <>
-      <h1>Mazmorra {level}</h1>
+    <main className="main">
+      <h1 className="main__tittle">Mazmorra {level}</h1>
       <Enemy
         onClickEnemy={() => {
           const damageToEnemy = resolveCombat(
@@ -107,7 +108,7 @@ function Battlefield({
         dexterity={player.dexterity}
       />
       <CombatLog messages={messages} />
-    </>
+    </main>
   );
 }
 export { Battlefield };

@@ -1,5 +1,5 @@
 import { Character } from "../Common/Types";
-import "./enemy.scss";
+import "./Enemy.scss";
 
 interface EnemyProps extends Character {
   onClickEnemy: React.MouseEventHandler<HTMLElement>;

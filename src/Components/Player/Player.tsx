@@ -1,5 +1,5 @@
 import { Character } from "../Common/Types";
-import "./player.scss";
+import "./Player.scss";
 
 interface PlayerProps extends Character {}
 
