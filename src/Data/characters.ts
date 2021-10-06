@@ -1,31 +1,35 @@
 import { Character } from "../Components/Common/Types";
 import Aleksandra from "../Images/Aleksandra.png";
+import Gnome from "../Images/Gnome.png";
+import Human from "../Images/Human.png";
+import Dwarf from "../Images/Dwarf.png";
+import Elf from "../Images/Elf.png";
 
 const enemy: Character[] = [
   {
-    name: "Elfo 1",
-    srcImg: "https://via.placeholder.com/150",
+    name: "Gnomo 1",
+    srcImg: Gnome,
     life: 20,
     strength: 15,
     dexterity: 14,
   },
   {
     name: "Humano 2",
-    srcImg: "https://via.placeholder.com/150",
+    srcImg: Human,
     life: 32,
     strength: 12,
     dexterity: 14,
   },
   {
     name: "Enano 3",
-    srcImg: "https://via.placeholder.com/150",
+    srcImg: Dwarf,
     life: 42,
     strength: 15,
     dexterity: 15,
   },
   {
-    name: "Mediano 4",
-    srcImg: "https://via.placeholder.com/150",
+    name: "Elf 4",
+    srcImg: Elf,
     life: 57,
     strength: 17,
     dexterity: 16,
