@@ -1,4 +1,5 @@
 import { Character } from "../Components/Common/Types";
+import Aleksandra from "../Images/Aleksandra.png";
 
 const enemy: Character[] = [
   {
@@ -34,28 +35,28 @@ const enemy: Character[] = [
 const player: Character[] = [
   {
     name: "Aleksándra",
-    srcImg: "https://via.placeholder.com/150",
+    srcImg: Aleksandra,
     life: 14,
     strength: 18,
     dexterity: 14,
   },
   {
     name: "Aleksándra",
-    srcImg: "https://via.placeholder.com/150",
+    srcImg: Aleksandra,
     life: 23,
     strength: 18,
     dexterity: 14,
   },
   {
     name: "Aleksándra",
-    srcImg: "https://via.placeholder.com/150",
+    srcImg: Aleksandra,
     life: 32,
     strength: 18,
     dexterity: 14,
   },
   {
     name: "Aleksándra",
-    srcImg: "https://via.placeholder.com/150",
+    srcImg: Aleksandra,
     life: 45,
     strength: 18,
     dexterity: 14,
