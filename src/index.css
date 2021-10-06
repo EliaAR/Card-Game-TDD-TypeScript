@@ -1,13 +1,18 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family: "caslon-antique.regular";
+  src: local("caslon-antique.regular"),
+    url("./Fonts/caslon-antique.regular.ttf") format("truetype");
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+  font-family: "gazen";
+  src: local("gazen"), url("./Fonts/gazen.ttf") format("truetype");
+}
+@font-face {
+  font-family: "heroquest";
+  src: local("heroquest"), url("./Fonts/heroquest.ttf") format("truetype");
+}
+@font-face {
+  font-family: "zapf-chancery";
+  src: local("zapf-chancery"),
+    url("./Fonts/zapf-chancery.ttf") format("truetype");
 }
