@@ -5,15 +5,16 @@
   &__tittle {
     font-family: "caxton";
     font-weight: bold;
+    text-transform: uppercase;
   }
   &__msg {
     font-family: "caslon-antique.regular";
     list-style: none;
   }
   &__msg--playerTurn {
-    color: rgb(241, 109, 109);
+    color: rgb(126, 60, 60);
   }
   &__msg--enemyTurn {
-    color: rgb(125, 125, 247);
+    color: rgb(63, 73, 87);
   }
 }

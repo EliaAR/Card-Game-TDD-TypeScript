@@ -1,9 +1,9 @@
 .enemy {
   margin-top: 10px;
   width: 180px;
-  height: 280px;
+  height: 285px;
   background-color: rgb(102, 85, 64);
-  border: 5px rgb(80, 97, 80);
+  border: 5px rgb(63, 73, 87);
   border-style: ridge inset inset ridge;
   text-align: center;
   &__name {
@@ -11,6 +11,7 @@
     font-weight: bold;
     text-transform: capitalize;
     color: #180e03;
+    font-size: 20px;
   }
   &__image {
     height: 190px;
