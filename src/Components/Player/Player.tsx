@@ -8,7 +8,12 @@ function Player({ name, srcImg, life, strength, dexterity }: PlayerProps) {
     <article data-testid="playerSection" className="player">
       <article>
         <p className="player__name">{name}</p>
-        <img src={srcImg} alt={`Imagen ${name}`} />
+        <img
+          src={srcImg}
+          alt={`Imagen ${name}`}
+          title={name}
+          className="player__image"
+        />
       </article>
       <article className="player__statsContainer">
         <p>Vida: {life} </p>

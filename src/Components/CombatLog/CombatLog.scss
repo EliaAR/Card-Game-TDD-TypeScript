@@ -10,4 +10,10 @@
     font-family: "caslon-antique.regular";
     list-style: none;
   }
+  &__msg--playerTurn {
+    color: rgb(241, 109, 109);
+  }
+  &__msg--enemyTurn {
+    color: rgb(125, 125, 247);
+  }
 }

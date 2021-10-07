@@ -22,7 +22,12 @@ function Enemy({
     >
       <article>
         <p className="enemy__name">{name}</p>
-        <img src={srcImg} alt={`Imagen ${name}`} />
+        <img
+          src={srcImg}
+          alt={`Imagen ${name}`}
+          title={name}
+          className="enemy__image"
+        />
       </article>
       <article className="enemy__statsContainer">
         <p>Vida: {life} </p>
