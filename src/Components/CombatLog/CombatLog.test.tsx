@@ -4,7 +4,12 @@ import { CombatLog } from "./CombatLog";
 describe("CombatLog works correctly", () => {
   it("There are messages and they are rendered", () => {
     render(
-      <CombatLog messages={["El ataque falla", "Es el turno del enemigo"]} />
+      <CombatLog
+        messages={[
+          { text: "El ataque falla", type: "attack" },
+          { text: "Es el turno del enemigo", type: "playerTurn" },
+        ]}
+      />
     );
     const Msg1 = screen.getByText(/el ataque falla/i);
     const Msg2 = screen.getByText(/es el turno del enemigo/i);
