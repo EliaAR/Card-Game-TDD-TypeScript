@@ -1,7 +1,8 @@
+import { MessageObject } from "../Common/Types";
 import "./CombatLog.scss";
 
 interface CombatLogProps {
-  messages: string[];
+  messages: MessageObject[];
 }
 
 function CombatLog({ messages }: CombatLogProps) {
@@ -11,8 +12,11 @@ function CombatLog({ messages }: CombatLogProps) {
       {messages.length ? (
         <ul>
           {messages.map((message, index) => (
-            <li key={index} className="combatLog__msg">
-              {message}
+            <li
+              key={index}
+              className={`combatLog__msg combatLog__msg--${message.type}`}
+            >
+              {message.text}
             </li>
           ))}
         </ul>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Player } from "../Player/Player";
 import { Enemy } from "../Enemy/Enemy";
-import { Character } from "../Common/Types";
+import { Character, MessageObject } from "../Common/Types";
 import { resolveCombat } from "../../Utils/resolveCombat";
 import { CombatLog } from "../CombatLog/CombatLog";
 import "./Battlefield.scss";
@@ -28,7 +28,7 @@ function Battlefield({
   mockRoll4Player,
 }: BattlefieldProps) {
   const [enemyLife, setEnemyLife] = useState(enemy.life);
-  const [messages, setMessages] = useState<string[]>([]);
+  const [messages, setMessages] = useState<MessageObject[]>([]);
   const [playerLife, setPlayerLife] = useState(player.life);
   const [enemyTurn, setEnemyTurn] = useState(false);
 
@@ -45,20 +45,26 @@ function Battlefield({
       if (damageToPlayer) {
         setMessages([
           ...messages,
-          "Turno del enemigo",
-          `Ataque exitoso del enemigo, ${damageToPlayer} puntos de daño`,
+          { text: "Turno del enemigo", type: "enemyTurn" },
+          {
+            text: `Ataque exitoso del enemigo, ${damageToPlayer} puntos de daño`,
+            type: "attack",
+          },
         ]);
         setEnemyTurn(false);
       } else {
         setMessages([
           ...messages,
-          "Turno del enemigo",
-          "Ataque fallido del enemigo",
+          { text: "Turno del enemigo", type: "enemyTurn" },
+          { text: "Ataque fallido del enemigo", type: "attack" },
         ]);
         setEnemyTurn(false);
       }
     } else {
-      setMessages([...messages, "Turno del jugador"]);
+      setMessages([
+        ...messages,
+        { text: "Turno del jugador", type: "playerTurn" },
+      ]);
     }
   }, [enemyTurn]);
 
@@ -89,10 +95,16 @@ function Battlefield({
               if (damageToEnemy) {
                 setMessages([
                   ...messages,
-                  `Ataque exitoso del jugador, ${damageToEnemy} puntos de daño`,
+                  {
+                    text: `Ataque exitoso del jugador, ${damageToEnemy} puntos de daño`,
+                    type: "attack",
+                  },
                 ]);
               } else {
-                setMessages([...messages, "Ataque fallido del jugador"]);
+                setMessages([
+                  ...messages,
+                  { text: "Ataque fallido del jugador", type: "attack" },
+                ]);
               }
               setEnemyTurn(true);
             }}

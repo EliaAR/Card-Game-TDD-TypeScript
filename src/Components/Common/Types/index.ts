@@ -5,3 +5,8 @@ export type Character = {
   strength: number;
   dexterity: number;
 };
+
+export type MessageObject = {
+  text: string;
+  type: "playerTurn" | "enemyTurn" | "attack";
+};
