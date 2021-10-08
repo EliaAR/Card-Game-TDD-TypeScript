@@ -1,0 +1,11 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 7vh;
+  background-color: #030201;
+  &__title {
+    font-family: "heroquest";
+    color: white;
+  }
+}

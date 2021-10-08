@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Header } from "../Header/Header";
 import { Player } from "../Player/Player";
 import { Enemy } from "../Enemy/Enemy";
 import { Character, MessageObject } from "../Common/Types";
@@ -78,54 +79,57 @@ function Battlefield({
   }, [playerLife, enemyLife, onCombatFinish]);
 
   return (
-    <main className="main">
-      <section className="main__container">
-        <section className="main__charactersContainer">
-          <Enemy
-            onClickEnemy={() => {
-              const damageToEnemy = resolveCombat(
-                player.strength,
-                enemy.dexterity,
-                mockRoll20Enemy,
-                mockRoll4Enemy
-              );
-              const enemyResultLife = enemyLife - damageToEnemy;
-              setEnemyLife(enemyResultLife > 0 ? enemyResultLife : 0);
-              if (damageToEnemy) {
-                setMessages([
-                  ...messages,
-                  {
-                    text: `Ataque exitoso del jugador, ${damageToEnemy} puntos de daño`,
-                    type: "attack",
-                  },
-                ]);
-              } else {
-                setMessages([
-                  ...messages,
-                  { text: "Ataque fallido del jugador", type: "attack" },
-                ]);
-              }
-              setEnemyTurn(true);
-            }}
-            name={enemy.name}
-            srcImg={enemy.srcImg}
-            life={enemyLife}
-            strength={enemy.strength}
-            dexterity={enemy.dexterity}
-          />
-          <Player
-            name={player.name}
-            srcImg={player.srcImg}
-            life={playerLife}
-            strength={player.strength}
-            dexterity={player.dexterity}
-          />
+    <>
+      <Header level={level} />
+      <main className="main">
+        <section className="main__container">
+          <section className="main__charactersContainer">
+            <Enemy
+              onClickEnemy={() => {
+                const damageToEnemy = resolveCombat(
+                  player.strength,
+                  enemy.dexterity,
+                  mockRoll20Enemy,
+                  mockRoll4Enemy
+                );
+                const enemyResultLife = enemyLife - damageToEnemy;
+                setEnemyLife(enemyResultLife > 0 ? enemyResultLife : 0);
+                if (damageToEnemy) {
+                  setMessages([
+                    ...messages,
+                    {
+                      text: `Ataque exitoso del jugador, ${damageToEnemy} puntos de daño`,
+                      type: "attack",
+                    },
+                  ]);
+                } else {
+                  setMessages([
+                    ...messages,
+                    { text: "Ataque fallido del jugador", type: "attack" },
+                  ]);
+                }
+                setEnemyTurn(true);
+              }}
+              name={enemy.name}
+              srcImg={enemy.srcImg}
+              life={enemyLife}
+              strength={enemy.strength}
+              dexterity={enemy.dexterity}
+            />
+            <Player
+              name={player.name}
+              srcImg={player.srcImg}
+              life={playerLife}
+              strength={player.strength}
+              dexterity={player.dexterity}
+            />
+          </section>
+          <section className="main__combatlogContainer">
+            <CombatLog messages={messages} />
+          </section>
         </section>
-        <section className="main__combatlogContainer">
-          <CombatLog messages={messages} />
-        </section>
-      </section>
-    </main>
+      </main>
+    </>
   );
 }
 export { Battlefield };
