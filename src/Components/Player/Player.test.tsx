@@ -4,7 +4,7 @@ import { Player } from "./Player";
 function Setup() {
   return render(
     <Player
-      name="Nombre del jugador"
+      name="Nombre"
       srcImg="https://via.placeholder.com/150"
       life={7}
       strength={8}
@@ -14,17 +14,20 @@ function Setup() {
 }
 
 describe("player is display corretly", () => {
+  it("category is shown", () => {
+    Setup();
+    const playerCategory = screen.getByText(/jugador/i);
+    expect(playerCategory).toBeInTheDocument();
+  });
   it("name is shown", () => {
     Setup();
-    const playerName = screen.getByText(/nombre del jugador/i);
+    const playerName = screen.getByText(/nombre/i);
 
     expect(playerName).toBeInTheDocument();
   });
   it("image is shown", () => {
     Setup();
-    const playerImg = screen.getByAltText(
-      /imagen nombre del jugador/i
-    ) as HTMLImageElement;
+    const playerImg = screen.getByAltText(/imagen nombre/i) as HTMLImageElement;
 
     expect(playerImg.src).toBe("https://via.placeholder.com/150");
   });
