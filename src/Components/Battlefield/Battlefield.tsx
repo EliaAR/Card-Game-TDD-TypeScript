@@ -79,7 +79,6 @@ function Battlefield({
 
   return (
     <main className="main">
-      <h1 className="main__tittle">Mazmorra {level}</h1>
       <section className="main__container">
         <section className="main__charactersContainer">
           <Enemy
