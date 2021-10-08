@@ -12,6 +12,7 @@ function Enemy({
   life,
   strength,
   dexterity,
+  level,
 }: EnemyProps) {
   return (
     <article
@@ -20,10 +21,12 @@ function Enemy({
       aria-label={name}
       className="enemy"
     >
-      <h2 className="enemy__category">Enemigo</h2>
-      <div className="enemy__container">
+      <h2 className={`enemy__category enemy__category--level${level}`}>
+        Enemigo
+      </h2>
+      <div className={`enemy__container enemy__container--level${level}`}>
         <article>
-          <p className="enemy__name">{name}</p>
+          <p className={`enemy__name enemy__name--level${level}`}>{name}</p>
           <img
             src={srcImg}
             alt={`Imagen ${name}`}

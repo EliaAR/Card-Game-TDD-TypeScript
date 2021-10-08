@@ -12,6 +12,7 @@ const enemy: Character[] = [
     life: 20,
     strength: 15,
     dexterity: 14,
+    level: 1,
   },
   {
     name: "Humano 2",
@@ -19,6 +20,7 @@ const enemy: Character[] = [
     life: 32,
     strength: 12,
     dexterity: 14,
+    level: 2,
   },
   {
     name: "Enano 3",
@@ -26,6 +28,7 @@ const enemy: Character[] = [
     life: 42,
     strength: 15,
     dexterity: 15,
+    level: 3,
   },
   {
     name: "Elf 4",
@@ -33,6 +36,7 @@ const enemy: Character[] = [
     life: 57,
     strength: 17,
     dexterity: 16,
+    level: 4,
   },
 ];
 
@@ -43,6 +47,7 @@ const player: Character[] = [
     life: 14,
     strength: 18,
     dexterity: 14,
+    level: 1,
   },
   {
     name: "Aleksándra",
@@ -50,6 +55,7 @@ const player: Character[] = [
     life: 23,
     strength: 18,
     dexterity: 14,
+    level: 2,
   },
   {
     name: "Aleksándra",
@@ -57,6 +63,7 @@ const player: Character[] = [
     life: 32,
     strength: 18,
     dexterity: 14,
+    level: 3,
   },
   {
     name: "Aleksándra",
@@ -64,6 +71,7 @@ const player: Character[] = [
     life: 45,
     strength: 18,
     dexterity: 14,
+    level: 4,
   },
 ];
 

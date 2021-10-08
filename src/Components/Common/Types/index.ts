@@ -4,6 +4,7 @@ export type Character = {
   life: number;
   strength: number;
   dexterity: number;
+  level: number;
 };
 
 export type MessageObject = {

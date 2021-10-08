@@ -81,7 +81,7 @@ function Battlefield({
   return (
     <>
       <Header level={level} />
-      <main className="main">
+      <main className={`main main--background${level}`}>
         <section className="main__charactersContainer">
           <Enemy
             onClickEnemy={() => {
@@ -114,6 +114,7 @@ function Battlefield({
             life={enemyLife}
             strength={enemy.strength}
             dexterity={enemy.dexterity}
+            level={level}
           />
           <Player
             name={player.name}
@@ -121,6 +122,7 @@ function Battlefield({
             life={playerLife}
             strength={player.strength}
             dexterity={player.dexterity}
+            level={level}
           />
         </section>
         <section className="main__combatlogContainer">

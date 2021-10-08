@@ -1,7 +1,10 @@
 .player {
-  margin-top: 10px;
   text-align: center;
   &__category {
+    margin-bottom: 1px;
+    background-color: rgba(0, 0, 0, 0.55);
+    border: 1px;
+    border-radius: 5px;
     font-family: "caxton";
     font-weight: bold;
     font-size: 20px;
@@ -15,6 +18,7 @@
     background-color: #393127;
     border: 5px #532121;
     border-style: ridge inset inset ridge;
+    border-radius: 5px;
   }
   &__name {
     font-family: "breathe-fire";
