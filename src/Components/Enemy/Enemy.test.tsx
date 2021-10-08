@@ -7,7 +7,7 @@ function Setup() {
   render(
     <Enemy
       onClickEnemy={onClickEnemyMock}
-      name="Nombre del enemigo"
+      name="Nombre"
       srcImg="https://via.placeholder.com/150"
       life={7}
       strength={8}
@@ -18,17 +18,19 @@ function Setup() {
 }
 
 describe("enemy is working corretly", () => {
+  it("category is shown", () => {
+    Setup();
+    const enemyCategory = screen.getByText(/enemigo/i);
+    expect(enemyCategory).toBeInTheDocument();
+  });
   it("name is shown", () => {
     Setup();
-    const nameEnemy = screen.getByText(/nombre del enemigo/i);
-
-    expect(nameEnemy).toBeInTheDocument();
+    const enemyName = screen.getByText(/nombre/i);
+    expect(enemyName).toBeInTheDocument();
   });
   it("image is shown", () => {
     Setup();
-    const enemyImg = screen.getByAltText(
-      /imagen nombre del enemigo/i
-    ) as HTMLImageElement;
+    const enemyImg = screen.getByAltText(/imagen nombre/i) as HTMLImageElement;
 
     expect(enemyImg.src).toBe("https://via.placeholder.com/150");
   });
@@ -44,7 +46,7 @@ describe("enemy is working corretly", () => {
   });
   it("when click on enemy onClickEnemy is called", () => {
     const onClickMock = Setup();
-    const button = screen.getByRole("button", { name: /nombre del enemigo/i });
+    const button = screen.getByRole("button", { name: /nombre/i });
     userEvent.click(button);
     expect(onClickMock).toHaveBeenCalled();
   });
