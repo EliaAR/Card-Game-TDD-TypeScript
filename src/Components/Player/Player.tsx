@@ -6,6 +6,7 @@ interface PlayerProps extends Character {}
 function Player({ name, srcImg, life, strength, dexterity }: PlayerProps) {
   return (
     <article data-testid="playerSection" className="player">
+      <h2>Jugadora</h2>
       <article>
         <p className="player__name">{name}</p>
         <img
