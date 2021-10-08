@@ -20,6 +20,7 @@ function Enemy({
       aria-label={name}
       className="enemy"
     >
+      <h2>Enemigo</h2>
       <article>
         <p className="enemy__name">{name}</p>
         <img
