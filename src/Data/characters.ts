@@ -7,7 +7,7 @@ import Elf from "../Images/Elf.png";
 
 const enemy: Character[] = [
   {
-    name: "Gnomo 1",
+    name: "Francesco",
     srcImg: Gnome,
     life: 20,
     strength: 15,

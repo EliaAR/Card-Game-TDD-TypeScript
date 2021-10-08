@@ -1,12 +1,21 @@
 .player {
   margin-top: 10px;
-  width: 150px;
-  height: 250px;
-  background-color: #393127;
-  border: 5px #532121;
-  border-style: ridge inset inset ridge;
   text-align: center;
-
+  &__category {
+    font-family: "caxton";
+    font-weight: bold;
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #641414;
+    text-shadow: #3a3737 1px 1px 0;
+  }
+  &__container {
+    width: 150px;
+    height: 250px;
+    background-color: #393127;
+    border: 5px #532121;
+    border-style: ridge inset inset ridge;
+  }
   &__name {
     font-family: "breathe-fire";
     font-weight: bold;
