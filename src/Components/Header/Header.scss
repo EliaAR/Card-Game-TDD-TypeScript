@@ -2,10 +2,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 7vh;
+  min-height: calc(10vh - 2px);
   background-color: #030201;
+  border-bottom: 2px solid #252931;
   &__title {
     font-family: "heroquest";
-    color: white;
+    font-size: 30px;
+    color: cornsilk;
+    text-shadow: #474747 3px 5px 2px;
   }
 }
