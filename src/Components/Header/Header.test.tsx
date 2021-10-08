@@ -4,7 +4,7 @@ import { Header } from "./Header";
 describe("Header is display correctly", () => {
   it("Title is shown", () => {
     render(<Header level={3} />);
-    const headerTitle = screen.getByText(/mazomorra 3/i);
+    const headerTitle = screen.getByText(/mazmorra 3/i);
     expect(headerTitle).toBeInTheDocument();
   });
 });
