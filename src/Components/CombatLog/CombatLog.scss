@@ -1,11 +1,14 @@
 .combatLog {
+  padding-top: 10px;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.65);
   text-align: center;
+  overflow: scroll;
 
-  &__tittle {
+  &__title {
     font-family: "caxton";
     font-weight: bold;
+    font-size: 17px;
     text-transform: uppercase;
     color: rgb(87, 70, 7);
   }

@@ -8,7 +8,7 @@ interface CombatLogProps {
 function CombatLog({ messages }: CombatLogProps) {
   return (
     <section role="log" className="combatLog">
-      <p className="combatLog__tittle">Registro de combate</p>
+      <h3 className="combatLog__title">Registro de combate</h3>
       {messages.length ? (
         <ul>
           {messages.map((message, index) => (
