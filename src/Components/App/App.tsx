@@ -42,7 +42,9 @@ function App({
     return (
       <main className="mainApp mainAppLose">
         <p className="mainApp__text mainApp__resultMsg">Has perdido 😢</p>
-        <button onClick={() => setScreen("battle")}>Intentarlo de nuevo</button>
+        <button onClick={() => setScreen("battle")} className="mainApp__button">
+          Intentarlo de nuevo
+        </button>
       </main>
     );
   } else if (screen === "win-game") {
@@ -53,7 +55,9 @@ function App({
           <div className="mainAppWinG__fireworks--after"></div>
         </div>
         <p className="mainAppWinG__text">Has completado el juego!!</p>
-        <button onClick={() => setScreen("battle")}>Volver a jugar</button>
+        <button onClick={() => setScreen("battle")} className="mainApp__button">
+          Volver a jugar
+        </button>
       </main>
     );
   } else {

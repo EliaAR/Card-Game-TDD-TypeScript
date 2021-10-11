@@ -24,3 +24,11 @@
   font-family: "caxton";
   src: local("caxton"), url("./Fonts/caxton.ttf") format("opentype");
 }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  height: 100%;
+}
