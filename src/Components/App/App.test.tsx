@@ -50,9 +50,10 @@ describe("Combat ends correctly", () => {
       userEvent.click(enemyButton);
     }
     const winMsg = screen.getByText(/victoria!!/i);
-    const levelMsg = screen.getByText(/has alcanzado el nivel 2/i);
+    const levelMsg = screen.getByText(/has alcanzado el nivel/i);
     expect(winMsg).toBeInTheDocument();
     expect(levelMsg).toBeInTheDocument();
+    expect(levelMsg.textContent).toBe("Has alcanzado el nivel 2");
 
     const playButton = screen.getByRole("button", {
       name: "Continuar jugando",
