@@ -28,24 +28,33 @@ function App({
 
   if (screen === "win-battle") {
     return (
-      <>
-        <p>Victoria!! Has alcanzado el nivel {level}</p>
-        <button onClick={() => setScreen("battle")}>Continuar jugando</button>
-      </>
+      <main className="mainApp mainAppWinB">
+        <p className="mainApp__text mainApp__resultMsg">Victoria!!</p>
+        <p className="mainApp__text">
+          Has alcanzado el nivel <span className="mainApp__level">{level}</span>
+        </p>
+        <button onClick={() => setScreen("battle")} className="mainApp__button">
+          Continuar jugando
+        </button>
+      </main>
     );
   } else if (screen === "lose") {
     return (
-      <>
-        <p>Has perdido 😢</p>
+      <main className="mainApp mainAppLose">
+        <p className="mainApp__text mainApp__resultMsg">Has perdido 😢</p>
         <button onClick={() => setScreen("battle")}>Intentarlo de nuevo</button>
-      </>
+      </main>
     );
   } else if (screen === "win-game") {
     return (
-      <>
-        <p>Has completado el juego!!</p>
+      <main className="mainApp mainAppWinG">
+        <div className="mainAppWinG__fireworks">
+          <div className="mainAppWinG__fireworks--before"></div>
+          <div className="mainAppWinG__fireworks--after"></div>
+        </div>
+        <p className="mainAppWinG__text">Has completado el juego!!</p>
         <button onClick={() => setScreen("battle")}>Volver a jugar</button>
-      </>
+      </main>
     );
   } else {
     return (
