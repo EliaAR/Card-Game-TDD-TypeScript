@@ -4,27 +4,14 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-
-  &__text {
-    margin-bottom: 10px;
-    font-family: "gaze";
-    font-size: 25px;
-    color: cornsilk;
-  }
-  &__resultMsg {
-    font-family: "breathe-fire";
-    font-size: 50px;
-  }
-  &__level {
-    font-size: 30px;
-  }
   &__button {
     padding: 0 10px;
     background-color: cornsilk;
     border-radius: 7px;
-    color: #3e3e3e;
+    color: #4a2004;
     font-family: "caslon-antique.regular";
     font-size: 20px;
+    font-weight: bold;
     text-decoration: none;
     white-space: nowrap;
     cursor: pointer;
@@ -40,6 +27,20 @@
     #633517,
     #592c0e
   );
+  &__resultMsg {
+    font-family: "breathe-fire";
+    font-size: 50px;
+    color: cornsilk;
+  }
+  &__text {
+    margin-bottom: 15px;
+    font-family: "gaze";
+    font-size: 25px;
+    color: cornsilk;
+  }
+  &__level {
+    font-size: 30px;
+  }
 }
 
 .mainAppLose {
@@ -51,6 +52,15 @@
     #0f1825,
     #050f1c
   );
+  &__resultMsg {
+    margin-bottom: 15px;
+    font-family: "breathe-fire";
+    font-size: 50px;
+    color: cornsilk;
+  }
+  &__button {
+    color: #253141;
+  }
 }
 
 .mainAppWinG {
@@ -133,25 +143,21 @@
       margin-top: 10%;
       margin-left: 40%;
     }
-
     20%,
     39.9% {
       margin-top: 40%;
       margin-left: 30%;
     }
-
     40%,
     59.9% {
       margin-top: 20%;
       margin-left: 70%;
     }
-
     60%,
     79.9% {
       margin-top: 30%;
       margin-left: 20%;
     }
-
     80%,
     99.9% {
       margin-top: 30%;
@@ -159,10 +165,13 @@
     }
   }
   &__text {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     text-align: center;
     font-family: "gaze";
     font-size: 40px;
     color: cornsilk;
+  }
+  &__button {
+    color: #1a1a1a;
   }
 }
