@@ -10,8 +10,9 @@ function CombatLog({ messages }: CombatLogProps) {
   const lastMsgRef = useRef<HTMLLIElement>(null);
 
   useEffect(() => {
-    lastMsgRef.current?.scrollIntoView();
-    console.log(lastMsgRef.current);
+    if (lastMsgRef.current && lastMsgRef.current.scrollIntoView) {
+      lastMsgRef.current?.scrollIntoView();
+    }
   });
 
   return (
