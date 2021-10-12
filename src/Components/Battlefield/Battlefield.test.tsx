@@ -35,7 +35,7 @@ function Setup(
     <Battlefield
       enemy={enemy}
       player={player}
-      level={4}
+      level={1}
       onCombatFinish={mockOnCombatFinish}
       mockRoll20Enemy={mockRoll20Enemy}
       mockRoll4Enemy={mockRoll4Enemy}
@@ -217,8 +217,7 @@ describe("tutorial modal works correctly", () => {
     expect(modalText).toBeInTheDocument();
     const buttonClose = screen.getByRole("button", { name: "Cerrar" });
     userEvent.click(buttonClose);
-    await waitForElementToBeRemoved(() =>
-      screen.queryByRole("button", { name: "Cerrar" })
-    );
+    const buttonToDissapear = screen.queryByRole("button", { name: "Cerrar" });
+    expect(buttonToDissapear).toBeNull();
   });
 });
