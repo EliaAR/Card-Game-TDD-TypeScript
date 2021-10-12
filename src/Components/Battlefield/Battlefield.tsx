@@ -84,7 +84,9 @@ function Battlefield({
     <>
       {tutorialModal ? (
         <Modal onCloseModal={() => setTutorialModal(false)}>
-          <p>Haz click en la carta del enemigo para atacarlo</p>
+          <p className="modalParagraph">
+            Haz click en la carta del enemigo para atacarlo
+          </p>
         </Modal>
       ) : null}
       <Header level={level} />

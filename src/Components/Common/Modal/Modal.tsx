@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import ReactDOM from "react-dom";
 import "./Modal.scss";
 
@@ -16,7 +15,14 @@ function Modal({ onCloseModal, children }: ModalProps) {
     <div onClick={onCloseModal} data-testid="modal-overlay" className="modal">
       <div onClick={(e) => e.stopPropagation()} className="modal__container">
         {children}
-        <div onClick={onCloseModal} role="button" aria-label="cerrar"></div>
+        <div
+          onClick={onCloseModal}
+          role="button"
+          aria-label="cerrar"
+          className="modal__button"
+        >
+          <i className="fas fa-times-circle"></i>
+        </div>
       </div>
     </div>,
     modalRoot
