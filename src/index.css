@@ -1,7 +1,15 @@
 @font-face {
+  font-family: "breathe-fire";
+  src: local("breathe-fire"), url("./Fonts/breathe-fire.otf") format("opentype");
+}
+@font-face {
   font-family: "caslon-antique.regular";
   src: local("caslon-antique.regular"),
     url("./Fonts/caslon-antique.regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "caxton";
+  src: local("caxton"), url("./Fonts/caxton.ttf") format("truetype");
 }
 @font-face {
   font-family: "gazen";
@@ -12,23 +20,21 @@
   src: local("heroquest"), url("./Fonts/heroquest.ttf") format("truetype");
 }
 @font-face {
+  font-family: "turok";
+  src: local("turok"), url("./Fonts/turok.ttf") format("truetype");
+}
+@font-face {
   font-family: "zapf-chancery";
   src: local("zapf-chancery"),
     url("./Fonts/zapf-chancery.ttf") format("truetype");
 }
-@font-face {
-  font-family: "breathe-fire";
-  src: local("breathe-fire"), url("./Fonts/breathe-fire.otf") format("opentype");
-}
-@font-face {
-  font-family: "caxton";
-  src: local("caxton"), url("./Fonts/caxton.ttf") format("opentype");
-}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
+
 body {
   height: 100%;
 }
