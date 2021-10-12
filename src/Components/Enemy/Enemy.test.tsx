@@ -10,6 +10,7 @@ function Setup() {
       name="Nombre"
       srcImg="https://via.placeholder.com/150"
       life={7}
+      maxLife={15}
       strength={8}
       dexterity={9}
       level={4}
@@ -37,7 +38,7 @@ describe("enemy is working corretly", () => {
   });
   it("stats are shown", () => {
     Setup();
-    const life = screen.getByText(/vida: 7/i);
+    const life = screen.getByText(/vida: 7 \/ 15/i);
     const strength = screen.getByText(/fuerza: 8/i);
     const dexterity = screen.getByText(/destreza: 9/i);
 
