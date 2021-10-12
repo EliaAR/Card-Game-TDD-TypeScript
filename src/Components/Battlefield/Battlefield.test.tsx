@@ -1,4 +1,9 @@
-import { render, screen, getByText } from "@testing-library/react";
+import {
+  render,
+  screen,
+  getByText,
+  waitForElementToBeRemoved,
+} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Battlefield } from "./Battlefield";
 import { Character } from "../Common/Types";
@@ -195,5 +200,25 @@ describe("Combat ends correctly", () => {
     const playerLife = getByText(playerElement, /vida: 0/i);
     expect(playerLife).toBeInTheDocument();
     expect(finishMock).toBeCalledWith("lose");
+  });
+});
+
+describe("tutorial modal works correctly", () => {
+  it("tutorial modal is shown and closed on user click", async () => {
+    Setup(
+      () => 8,
+      () => 2,
+      () => 8,
+      () => 2
+    );
+    const modalText = screen.getByText(
+      /haz click en la carta del enemigo para atacarlo/i
+    );
+    expect(modalText).toBeInTheDocument();
+    const buttonClose = screen.getByRole("button", { name: "Cerrar" });
+    userEvent.click(buttonClose);
+    await waitForElementToBeRemoved(() =>
+      screen.queryByRole("button", { name: "Cerrar" })
+    );
   });
 });
