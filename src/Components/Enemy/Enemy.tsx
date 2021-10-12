@@ -4,6 +4,7 @@ import "./Enemy.scss";
 interface EnemyProps extends Character {
   onClickEnemy: React.MouseEventHandler<HTMLElement>;
   level: number;
+  maxLife: number;
 }
 
 function Enemy({
@@ -11,6 +12,7 @@ function Enemy({
   name,
   srcImg,
   life,
+  maxLife,
   strength,
   dexterity,
   level,
@@ -36,7 +38,9 @@ function Enemy({
           />
         </article>
         <article className="enemy__statsContainer">
-          <p>Vida: {life} </p>
+          <p>
+            Vida: {life} / {maxLife}
+          </p>
           <p>Fuerza: {strength} </p>
           <p>Destreza: {dexterity} </p>
         </article>
