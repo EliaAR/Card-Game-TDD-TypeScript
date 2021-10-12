@@ -3,6 +3,7 @@ import "./Enemy.scss";
 
 interface EnemyProps extends Character {
   onClickEnemy: React.MouseEventHandler<HTMLElement>;
+  level: number;
 }
 
 function Enemy({

@@ -122,7 +122,6 @@ function Battlefield({
             life={playerLife}
             strength={player.strength}
             dexterity={player.dexterity}
-            level={level}
           />
         </section>
         <section className="main__combatlogContainer">
