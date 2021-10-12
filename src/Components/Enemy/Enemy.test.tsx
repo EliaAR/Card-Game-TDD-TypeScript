@@ -12,6 +12,7 @@ function Setup() {
       life={7}
       strength={8}
       dexterity={9}
+      level={4}
     />
   );
   return onClickEnemyMock;
