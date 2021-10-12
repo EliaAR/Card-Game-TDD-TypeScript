@@ -15,7 +15,8 @@
   &__category--level4 {
     font-size: 25px;
     font-weight: bolder;
-    color: black;
+    color: #343434;
+    text-shadow: #2e2c2c 1px 1px 0;
   }
   &__container {
     width: 150px;
@@ -39,7 +40,8 @@
     font-size: 20px;
   }
   &__name--level4 {
-    color: #2a2621;
+    color: #3a3938;
+    text-shadow: #423f3f 1px 1px 0;
   }
   &__image {
     height: 150px;
