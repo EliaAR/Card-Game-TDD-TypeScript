@@ -121,6 +121,7 @@ function Battlefield({
             name={enemy.name}
             srcImg={enemy.srcImg}
             life={enemyLife}
+            maxLife={enemy.life}
             strength={enemy.strength}
             dexterity={enemy.dexterity}
             level={level}
@@ -129,6 +130,7 @@ function Battlefield({
             name={player.name}
             srcImg={player.srcImg}
             life={playerLife}
+            maxLife={player.life}
             strength={player.strength}
             dexterity={player.dexterity}
           />
