@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/static/css/main.bb9cf502.chunk.css",
+    "main.js": "/static/js/main.33bf4e27.chunk.js",
+    "main.js.map": "/static/js/main.33bf4e27.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.edf8956f.js",
+    "runtime-main.js.map": "/static/js/runtime-main.edf8956f.js.map",
+    "static/js/2.e5fcbe17.chunk.js": "/static/js/2.e5fcbe17.chunk.js",
+    "static/js/2.e5fcbe17.chunk.js.map": "/static/js/2.e5fcbe17.chunk.js.map",
+    "static/js/3.a0ac3f11.chunk.js": "/static/js/3.a0ac3f11.chunk.js",
+    "static/js/3.a0ac3f11.chunk.js.map": "/static/js/3.a0ac3f11.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.bb9cf502.chunk.css.map": "/static/css/main.bb9cf502.chunk.css.map",
+    "static/js/2.e5fcbe17.chunk.js.LICENSE.txt": "/static/js/2.e5fcbe17.chunk.js.LICENSE.txt",
+    "static/media/Aleksandra.c3b26d86.png": "/static/media/Aleksandra.c3b26d86.png",
+    "static/media/Dwarf.d144af21.png": "/static/media/Dwarf.d144af21.png",
+    "static/media/Elf.3169e275.png": "/static/media/Elf.3169e275.png",
+    "static/media/Gnome.27363843.png": "/static/media/Gnome.27363843.png",
+    "static/media/Human.3e173381.png": "/static/media/Human.3e173381.png",
+    "static/media/Battlefield.scss": "/static/media/back4.a81af094.jpg",
+    "static/media/HomePage.scss": "/static/media/backA.ee982bba.png",
+    "static/media/index.css": "/static/media/zapf-chancery.4add9483.ttf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.edf8956f.js",
+    "static/js/2.e5fcbe17.chunk.js",
+    "static/css/main.bb9cf502.chunk.css",
+    "static/js/main.33bf4e27.chunk.js"
+  ]
+}
