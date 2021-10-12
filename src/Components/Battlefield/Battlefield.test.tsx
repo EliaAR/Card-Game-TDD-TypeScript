@@ -1,9 +1,4 @@
-import {
-  render,
-  screen,
-  getByText,
-  waitForElementToBeRemoved,
-} from "@testing-library/react";
+import { render, screen, getByText } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Battlefield } from "./Battlefield";
 import { Character } from "../Common/Types";
@@ -215,9 +210,9 @@ describe("tutorial modal works correctly", () => {
       /haz click en la carta del enemigo para atacarlo/i
     );
     expect(modalText).toBeInTheDocument();
-    const buttonClose = screen.getByRole("button", { name: "Cerrar" });
+    const buttonClose = screen.getByRole("button", { name: "cerrar" });
     userEvent.click(buttonClose);
-    const buttonToDissapear = screen.queryByRole("button", { name: "Cerrar" });
+    const buttonToDissapear = screen.queryByRole("button", { name: "cerrar" });
     expect(buttonToDissapear).toBeNull();
   });
 });

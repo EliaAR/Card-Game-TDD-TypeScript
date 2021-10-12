@@ -12,7 +12,7 @@ describe("modal works correctly", () => {
     );
     const divText = screen.getByText(/relleno/i);
     expect(divText).toBeInTheDocument();
-    const buttonClose = screen.getByRole("button", { name: "Cerrar" });
+    const buttonClose = screen.getByRole("button", { name: "cerrar" });
     userEvent.click(buttonClose);
     const divOverlay = screen.getByTestId("modal-overlay");
     userEvent.click(divOverlay);

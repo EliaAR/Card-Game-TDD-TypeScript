@@ -16,7 +16,7 @@ function Modal({ onCloseModal, children }: ModalProps) {
     <div onClick={onCloseModal} data-testid="modal-overlay" className="modal">
       <div onClick={(e) => e.stopPropagation()} className="modal__container">
         {children}
-        <button onClick={onCloseModal}>Cerrar</button>
+        <div onClick={onCloseModal} role="button" aria-label="cerrar"></div>
       </div>
     </div>,
     modalRoot
