@@ -37,7 +37,7 @@ function Setup(
   );
 }
 
-describe("Combat ends correctly", () => {
+describe("game works correctly", () => {
   it("Player wins", () => {
     Setup(
       () => 12,
@@ -45,6 +45,8 @@ describe("Combat ends correctly", () => {
       () => 8,
       () => 3
     );
+    const buttonOnClick = screen.getByRole("button", { name: "Nueva partida" });
+    userEvent.click(buttonOnClick);
     const enemyButton = screen.getByRole("button", { name: enemy[0].name });
     for (let index = 0; index < 6; index++) {
       userEvent.click(enemyButton);
@@ -70,6 +72,10 @@ describe("Combat ends correctly", () => {
       () => 16,
       () => 3
     );
+    const buttonOnClick = screen.getByRole("button", {
+      name: "Nueva partida",
+    });
+    userEvent.click(buttonOnClick);
     const enemyButton = screen.getByRole("button", { name: enemy[0].name });
     for (let index = 0; index < 10; index++) {
       userEvent.click(enemyButton);
@@ -92,6 +98,10 @@ describe("Combat ends correctly", () => {
       () => 8,
       () => 3
     );
+    const buttonOnClick = screen.getByRole("button", {
+      name: "Nueva partida",
+    });
+    userEvent.click(buttonOnClick);
     for (let i = 0; i < 4; i++) {
       const enemyButton = screen.getByRole("button", { name: enemy[0].name });
       for (let j = 0; j < 6; j++) {
