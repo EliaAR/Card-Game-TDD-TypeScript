@@ -5,6 +5,7 @@ import { Enemy } from "../Enemy/Enemy";
 import { Character, MessageObject } from "../Common/Types";
 import { resolveCombat } from "../../Utils/resolveCombat";
 import { CombatLog } from "../CombatLog/CombatLog";
+import { Modal } from "../Common/Modal/Modal";
 import "./Battlefield.scss";
 
 interface BattlefieldProps {
@@ -32,6 +33,7 @@ function Battlefield({
   const [messages, setMessages] = useState<MessageObject[]>([]);
   const [playerLife, setPlayerLife] = useState(player.life);
   const [enemyTurn, setEnemyTurn] = useState(false);
+  const [tutorialModal, setTutorialModal] = useState(level === 1);
 
   useEffect(() => {
     if (enemyTurn) {
@@ -80,6 +82,11 @@ function Battlefield({
 
   return (
     <>
+      {tutorialModal ? (
+        <Modal onCloseModal={() => setTutorialModal(false)}>
+          <p>Haz click en la carta del enemigo para atacarlo</p>
+        </Modal>
+      ) : null}
       <Header level={level} />
       <main className={`main main--background${level}`}>
         <section className="main__charactersContainer">
