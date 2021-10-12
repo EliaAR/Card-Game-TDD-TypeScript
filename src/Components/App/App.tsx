@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Battlefield } from "../Battlefield/Battlefield";
+import { HomePage } from "../HomePage/HomePage";
 import { player, enemy } from "../../Data/characters";
 import { Character } from "../Common/Types";
 import "./App.scss";
 
-type Screens = "win-battle" | "win-game" | "lose" | "battle";
+type Screens = "start-screen" | "win-battle" | "win-game" | "lose" | "battle";
 
 interface AppProps {
   mockRoll20Enemy?: () => number;
@@ -23,7 +24,7 @@ function App({
   mockEnemy,
   mockPlayer,
 }: AppProps) {
-  const [screen, setScreen] = useState<Screens>("battle");
+  const [screen, setScreen] = useState<Screens>("start-screen");
   const [level, setLevel] = useState(1);
 
   if (screen === "win-battle") {
@@ -60,7 +61,7 @@ function App({
         </button>
       </main>
     );
-  } else {
+  } else if (screen === "battle") {
     return (
       <Battlefield
         enemy={mockEnemy ? mockEnemy[level - 1] : enemy[level - 1]}
@@ -83,6 +84,8 @@ function App({
         mockRoll4Player={mockRoll4Player}
       />
     );
+  } else {
+    return <HomePage onClickStart={() => setScreen("battle")} />;
   }
 }
 
