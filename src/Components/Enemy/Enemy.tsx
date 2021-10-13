@@ -38,7 +38,7 @@ function Enemy({
           />
         </article>
         <article className="enemy__statsContainer">
-          <p>
+          <p className="enemy__statsLife">
             Vida: {life} / {maxLife}
           </p>
           <p>Fuerza: {strength} </p>
