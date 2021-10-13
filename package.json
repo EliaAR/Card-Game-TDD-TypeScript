@@ -2,6 +2,7 @@
   "name": "kill-9-game-typescript",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://eliaar.github.io/Card-Game-TDD-TypeScript/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
