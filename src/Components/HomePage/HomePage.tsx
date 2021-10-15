@@ -1,7 +1,7 @@
 import "./HomePage.scss";
 
 interface HomePageProps {
-  onClickStart: () => void;
+  onClickStart: React.MouseEventHandler<HTMLElement>;
 }
 
 function HomePage({ onClickStart }: HomePageProps) {
