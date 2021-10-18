@@ -1,4 +1,4 @@
-export type Character = {
+export type CharacterObject = {
   name: string;
   srcImg: string;
   life: number;
@@ -11,7 +11,7 @@ export type MessageObject = {
   type: "playerTurn" | "enemyTurn" | "attack";
 };
 
-export type Consumables = {
+export type ConsumableObject = {
   name: string;
   srcImg: string;
   number: number;

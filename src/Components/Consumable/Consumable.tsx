@@ -1,6 +1,6 @@
-import { Consumables } from "../Common/Types";
+import { ConsumableObject } from "../Common/Types";
 
-interface ConsumableProps extends Consumables {
+interface ConsumableProps extends ConsumableObject {
   onClickConsumable: React.MouseEventHandler<HTMLElement>;
 }
 

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Battlefield } from "../Battlefield/Battlefield";
 import { HomePage } from "../HomePage/HomePage";
 import { player, enemy } from "../../Data/characters";
-import { Character } from "../Common/Types";
+import { CharacterObject } from "../Common/Types";
 import "./App.scss";
 
 type Screens = "start-screen" | "win-battle" | "win-game" | "lose" | "battle";
@@ -12,8 +12,8 @@ interface AppProps {
   mockRoll4Enemy?: () => number;
   mockRoll20Player?: () => number;
   mockRoll4Player?: () => number;
-  mockEnemy?: Character[];
-  mockPlayer?: Character[];
+  mockEnemy?: CharacterObject[];
+  mockPlayer?: CharacterObject[];
 }
 
 function App({

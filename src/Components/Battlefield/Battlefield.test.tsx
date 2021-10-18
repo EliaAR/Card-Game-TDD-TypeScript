@@ -1,9 +1,9 @@
 import { render, screen, getByText } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Battlefield } from "./Battlefield";
-import { Character } from "../Common/Types";
+import { CharacterObject } from "../Common/Types";
 
-const enemy: Character = {
+const enemy: CharacterObject = {
   life: 30,
   strength: 16,
   dexterity: 14,
@@ -11,7 +11,7 @@ const enemy: Character = {
   srcImg: "https://via.placeholder.com/150",
 };
 
-const player: Character = {
+const player: CharacterObject = {
   life: 50,
   strength: 16,
   dexterity: 14,

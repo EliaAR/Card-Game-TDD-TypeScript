@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
 import { Header } from "../Header/Header";
-import { Player } from "../Player/Player";
 import { Enemy } from "../Enemy/Enemy";
-import { Character, MessageObject } from "../Common/Types";
+import { Player } from "../Player/Player";
+import { CharacterObject, MessageObject } from "../Common/Types";
 import { resolveCombat } from "../../Utils/resolveCombat";
 import { CombatLog } from "../CombatLog/CombatLog";
 import { Modal } from "../Common/Modal/Modal";
 import "./Battlefield.scss";
 
 interface BattlefieldProps {
-  enemy: Character;
-  player: Character;
+  enemy: CharacterObject;
+  player: CharacterObject;
   level: number;
   onCombatFinish: (result: "win" | "lose") => void;
   mockRoll20Enemy?: () => number;

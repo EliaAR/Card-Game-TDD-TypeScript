@@ -1,9 +1,9 @@
 import { render, screen, getByText } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { App } from "./App";
-import { Character } from "../Common/Types";
+import { CharacterObject } from "../Common/Types";
 
-const enemy: Character[] = new Array(4).fill({
+const enemy: CharacterObject[] = new Array(4).fill({
   name: "erPatriarca",
   srcImg: "https://via.placeholder.com/150",
   life: 20,
@@ -11,7 +11,7 @@ const enemy: Character[] = new Array(4).fill({
   dexterity: 14,
 });
 
-const player: Character[] = new Array(4).fill({
+const player: CharacterObject[] = new Array(4).fill({
   name: "laObrera",
   srcImg: "https://via.placeholder.com/150",
   life: 20,

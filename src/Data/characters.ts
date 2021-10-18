@@ -1,11 +1,11 @@
-import { Character } from "../Components/Common/Types";
+import { CharacterObject } from "../Components/Common/Types";
 import Aleksandra from "../Images/Aleksandra.png";
 import Gnome from "../Images/Gnome.png";
 import Human from "../Images/Human.png";
 import Dwarf from "../Images/Dwarf.png";
 import Elf from "../Images/Elf.png";
 
-const enemy: Character[] = [
+const enemy: CharacterObject[] = [
   {
     name: "Francesco",
     srcImg: Gnome,
@@ -36,7 +36,7 @@ const enemy: Character[] = [
   },
 ];
 
-const player: Character[] = [
+const player: CharacterObject[] = [
   {
     name: "Aleksándra",
     srcImg: Aleksandra,

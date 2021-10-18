@@ -1,7 +1,7 @@
-import { Character } from "../Common/Types";
+import { CharacterObject } from "../Common/Types";
 import "./Enemy.scss";
 
-interface EnemyProps extends Character {
+interface EnemyProps extends CharacterObject {
   onClickEnemy: React.MouseEventHandler<HTMLElement>;
   level: number;
   maxLife: number;

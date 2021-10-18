@@ -1,7 +1,7 @@
-import { Character } from "../Common/Types";
+import { CharacterObject } from "../Common/Types";
 import "./Player.scss";
 
-interface PlayerProps extends Character {
+interface PlayerProps extends CharacterObject {
   maxLife: number;
 }
 
