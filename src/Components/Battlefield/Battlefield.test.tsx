@@ -1,7 +1,7 @@
 import { render, screen, getByText } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Battlefield } from "./Battlefield";
-import { CharacterObject } from "../Common/Types";
+import { CharacterObject, ConsumableObject } from "../Common/Types";
 
 const enemy: CharacterObject = {
   life: 30,
@@ -19,6 +19,12 @@ const player: CharacterObject = {
   srcImg: "https://via.placeholder.com/150",
 };
 
+const healthPotion: ConsumableObject = {
+  name: "Poción salud",
+  number: 2,
+  srcImg: "https://via.placeholder.com/150",
+};
+
 function Setup(
   mockRoll20Enemy: () => number,
   mockRoll4Enemy: () => number,
@@ -30,6 +36,7 @@ function Setup(
     <Battlefield
       enemy={enemy}
       player={player}
+      healthPotion={healthPotion}
       level={1}
       onCombatFinish={mockOnCombatFinish}
       mockRoll20Enemy={mockRoll20Enemy}
@@ -210,9 +217,37 @@ describe("tutorial modal works correctly", () => {
       /haz click en la carta del enemigo para atacarlo/i
     );
     expect(modalText).toBeInTheDocument();
+
     const buttonClose = screen.getByRole("button", { name: "cerrar" });
     userEvent.click(buttonClose);
     const buttonToDissapear = screen.queryByRole("button", { name: "cerrar" });
     expect(buttonToDissapear).toBeNull();
+  });
+});
+
+describe("HealthPotion works correctly", () => {
+  it("Player life changes and is registered in CombatLog", () => {
+    Setup(
+      () => 8,
+      () => 2,
+      () => 16,
+      () => 2
+    );
+    const enemyButton = screen.getByRole("button", { name: enemy.name });
+    userEvent.dblClick(enemyButton);
+    const consumableButton = screen.getByRole("button", {
+      name: /poción salud/i,
+    });
+    userEvent.click(consumableButton);
+    const playerElement = screen.getByTestId("playerSection");
+    const playerLife = getByText(playerElement, /vida: 40/i);
+    expect(playerLife).toBeInTheDocument();
+
+    const log = screen.getByRole("log");
+    const healtpotionMessage = getByText(
+      log,
+      /jugador usa poti de vida y aumenta 10 puntos de vida/i
+    );
+    expect(healtpotionMessage).toBeInTheDocument();
   });
 });

@@ -1,7 +1,7 @@
 import { render, screen, getByText } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { App } from "./App";
-import { CharacterObject } from "../Common/Types";
+import { CharacterObject, ConsumableObject } from "../Common/Types";
 
 const enemy: CharacterObject[] = new Array(4).fill({
   name: "erPatriarca",
@@ -19,6 +19,12 @@ const player: CharacterObject[] = new Array(4).fill({
   dexterity: 14,
 });
 
+const healthPotion: ConsumableObject = {
+  name: "Poción salud",
+  number: 2,
+  srcImg: "https://via.placeholder.com/150",
+};
+
 function Setup(
   mockRoll20Enemy: () => number,
   mockRoll4Enemy: () => number,
@@ -33,6 +39,7 @@ function Setup(
       mockRoll4Player={mockRoll4Player}
       mockEnemy={enemy}
       mockPlayer={player}
+      mockHealthPotion={healthPotion}
     />
   );
 }
@@ -124,5 +131,26 @@ describe("game works correctly", () => {
     const playerElement = screen.getByTestId("playerSection");
     const playerName = getByText(playerElement, player[0].name);
     expect(playerName).toBeInTheDocument();
+  });
+});
+
+describe("HealthPotion is display correctly", () => {
+  it("Number of potions change", () => {
+    Setup(
+      () => 8,
+      () => 2,
+      () => 16,
+      () => 3
+    );
+    const buttonOnClick = screen.getByRole("button", {
+      name: "Nueva partida",
+    });
+    userEvent.click(buttonOnClick);
+    const consumableButton = screen.getByRole("button", {
+      name: /poción salud/i,
+    });
+    userEvent.click(consumableButton);
+    const healthPotionNumber = screen.getByText(/nº1/i);
+    expect(healthPotionNumber).toBeInTheDocument();
   });
 });
