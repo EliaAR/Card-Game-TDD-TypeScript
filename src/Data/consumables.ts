@@ -1,10 +1,10 @@
 import { ConsumableObject } from "../Components/Common/Types";
-import healthPotion from "../Images/heathPotion.png";
+import heathPotion from "../Images/heathPotion.png";
 
 const healtPotion: ConsumableObject = {
   name: "poción salud",
   number: 2,
-  srcImg: healthPotion,
+  srcImg: heathPotion,
 };
 
 export { healtPotion };

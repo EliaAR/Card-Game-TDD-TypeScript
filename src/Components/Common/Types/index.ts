@@ -8,7 +8,7 @@ export type CharacterObject = {
 
 export type MessageObject = {
   text: string;
-  type: "playerTurn" | "enemyTurn" | "attack";
+  type: "playerTurn" | "enemyTurn" | "attack" | "consumable";
 };
 
 export type ConsumableObject = {

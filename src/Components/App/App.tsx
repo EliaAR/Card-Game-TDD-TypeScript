@@ -2,8 +2,9 @@ import { useState } from "react";
 import { Battlefield } from "../Battlefield/Battlefield";
 import { HomePage } from "../HomePage/HomePage";
 import { player, enemy } from "../../Data/characters";
-import { CharacterObject } from "../Common/Types";
+import { CharacterObject, ConsumableObject } from "../Common/Types";
 import "./App.scss";
+import { healtPotion } from "../../Data/consumables";
 
 type Screens = "start-screen" | "win-battle" | "win-game" | "lose" | "battle";
 
@@ -14,6 +15,7 @@ interface AppProps {
   mockRoll4Player?: () => number;
   mockEnemy?: CharacterObject[];
   mockPlayer?: CharacterObject[];
+  mockHealthPotion?: ConsumableObject;
 }
 
 function App({
@@ -23,9 +25,11 @@ function App({
   mockRoll4Player,
   mockEnemy,
   mockPlayer,
+  mockHealthPotion,
 }: AppProps) {
   const [screen, setScreen] = useState<Screens>("start-screen");
   const [level, setLevel] = useState(1);
+  const [numberPotions, setNumberPotions] = useState(3);
 
   if (screen === "win-battle") {
     return (
@@ -74,6 +78,9 @@ function App({
         enemy={mockEnemy ? mockEnemy[level - 1] : enemy[level - 1]}
         player={mockPlayer ? mockPlayer[level - 1] : player[level - 1]}
         level={level}
+        healthPotion={mockHealthPotion ? mockHealthPotion : healtPotion}
+        currentAmountPotions={numberPotions}
+        setCurrentAmountPotions={setNumberPotions}
         onCombatFinish={(combatResult) => {
           if (combatResult === "win" && level < 4) {
             setScreen("win-battle");

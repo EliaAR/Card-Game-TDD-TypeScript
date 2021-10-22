@@ -2,16 +2,24 @@ import { useState, useEffect } from "react";
 import { Header } from "../Header/Header";
 import { Enemy } from "../Enemy/Enemy";
 import { Player } from "../Player/Player";
-import { CharacterObject, MessageObject } from "../Common/Types";
+import { Consumable } from "../Consumable/Consumable";
 import { resolveCombat } from "../../Utils/resolveCombat";
 import { CombatLog } from "../CombatLog/CombatLog";
 import { Modal } from "../Common/Modal/Modal";
+import {
+  CharacterObject,
+  MessageObject,
+  ConsumableObject,
+} from "../Common/Types";
 import "./Battlefield.scss";
 
 interface BattlefieldProps {
   enemy: CharacterObject;
   player: CharacterObject;
+  healthPotion: ConsumableObject;
   level: number;
+  currentAmountPotions: number;
+  setCurrentAmountPotions: React.Dispatch<React.SetStateAction<number>>;
   onCombatFinish: (result: "win" | "lose") => void;
   mockRoll20Enemy?: () => number;
   mockRoll4Enemy?: () => number;
@@ -23,6 +31,9 @@ function Battlefield({
   enemy,
   player,
   level,
+  healthPotion,
+  currentAmountPotions,
+  setCurrentAmountPotions,
   onCombatFinish,
   mockRoll20Enemy,
   mockRoll4Enemy,
@@ -133,6 +144,51 @@ function Battlefield({
             maxLife={player.life}
             strength={player.strength}
             dexterity={player.dexterity}
+          />
+          <Consumable
+            onClickConsumable={() => {
+              if (playerLife < player.life) {
+                if (playerLife <= player.life - 10) {
+                  setPlayerLife(playerLife + 10);
+                  setMessages([
+                    ...messages,
+                    {
+                      text: "Jugador usa poti de vida → +10 puntos de vida",
+                      type: "consumable",
+                    },
+                  ]);
+                } else {
+                  let remainingPlayerLife = player.life - playerLife;
+                  setPlayerLife(playerLife + remainingPlayerLife);
+                  setMessages([
+                    ...messages,
+                    {
+                      text: `Jugador usa poti de vida → ${remainingPlayerLife} puntos de vida`,
+                      type: "consumable",
+                    },
+                  ]);
+                }
+              } else {
+                setPlayerLife(playerLife);
+                setMessages([
+                  ...messages,
+                  {
+                    text: "El jugador tiene demasiada vida para usar poti",
+                    type: "consumable",
+                  },
+                ]);
+              }
+              if (currentAmountPotions > 0 && currentAmountPotions <= 3) {
+                setCurrentAmountPotions(currentAmountPotions - 1);
+                setEnemyTurn(true);
+              } else {
+                setCurrentAmountPotions(currentAmountPotions);
+              }
+            }}
+            name={healthPotion.name}
+            srcImg={healthPotion.srcImg}
+            number={currentAmountPotions}
+            consumableDisabled={currentAmountPotions === 0}
           />
         </section>
         <section className="main__combatlogContainer">
