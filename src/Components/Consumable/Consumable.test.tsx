@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Consumable } from "./Consumable";
 
-function SetUp() {
+function SetUp(disabled?: boolean) {
   const mockOnClickConsumable = jest.fn();
   render(
     <Consumable
@@ -10,6 +10,7 @@ function SetUp() {
       name="Poción salud"
       srcImg="https://via.placeholder.com/150"
       number={2}
+      consumableDisabled={disabled}
     />
   );
   return mockOnClickConsumable;
@@ -31,12 +32,20 @@ describe("Consumable works correctly", () => {
     const consumableRemaining = screen.getByText(/nº2/i);
     expect(consumableRemaining).toBeInTheDocument();
   });
-  it("when click on consumable onClickConsumable is called", () => {
+  it("when consumable is enabled, onClickConsumable is called", () => {
     const onClickMock = SetUp();
     const consumableButton = screen.getByRole("button", {
       name: /poción salud/i,
     });
     userEvent.click(consumableButton);
     expect(onClickMock).toHaveBeenCalled();
+  });
+  it("when consumable is disabled, onClickConsumable is not called", () => {
+    const onClickMock = SetUp(true);
+    const consumableButton = screen.getByRole("button", {
+      name: /poción salud/i,
+    });
+    userEvent.click(consumableButton);
+    expect(onClickMock).not.toHaveBeenCalled();
   });
 });

@@ -32,12 +32,15 @@ function Setup(
   mockRoll4Player: () => number
 ) {
   const mockOnCombatFinish = jest.fn();
+  const mockSetCurrentAmountPotions = jest.fn();
   render(
     <Battlefield
       enemy={enemy}
       player={player}
       healthPotion={healthPotion}
       level={1}
+      currentAmountPotions={3}
+      setCurrentAmountPotions={mockSetCurrentAmountPotions}
       onCombatFinish={mockOnCombatFinish}
       mockRoll20Enemy={mockRoll20Enemy}
       mockRoll4Enemy={mockRoll4Enemy}
@@ -45,7 +48,7 @@ function Setup(
       mockRoll4Player={mockRoll4Player}
     />
   );
-  return mockOnCombatFinish;
+  return { mockOnCombatFinish, mockSetCurrentAmountPotions };
 }
 
 describe("Combat works correctly", () => {
@@ -173,7 +176,7 @@ describe("Combat works correctly", () => {
 
 describe("Combat ends correctly", () => {
   it("Player wins", () => {
-    const finishMock = Setup(
+    const { mockOnCombatFinish } = Setup(
       () => 12,
       () => 3,
       () => 8,
@@ -185,10 +188,10 @@ describe("Combat ends correctly", () => {
     }
     const enemyLife = getByText(enemyButton, /vida: 0/i);
     expect(enemyLife).toBeInTheDocument();
-    expect(finishMock).toBeCalledWith("win");
+    expect(mockOnCombatFinish).toBeCalledWith("win");
   });
   it("Player lose", () => {
-    const finishMock = Setup(
+    const { mockOnCombatFinish } = Setup(
       () => 8,
       () => 2,
       () => 16,
@@ -201,7 +204,7 @@ describe("Combat ends correctly", () => {
     const playerElement = screen.getByTestId("playerSection");
     const playerLife = getByText(playerElement, /vida: 0/i);
     expect(playerLife).toBeInTheDocument();
-    expect(finishMock).toBeCalledWith("lose");
+    expect(mockOnCombatFinish).toBeCalledWith("lose");
   });
 });
 
@@ -226,7 +229,7 @@ describe("tutorial modal works correctly", () => {
 });
 
 describe("HealthPotion works correctly", () => {
-  it("Player life changes and is registered in CombatLog", () => {
+  it("Player can use potion: potion heals the correct hit points, player life changes and is registered in CombatLog", () => {
     Setup(
       () => 8,
       () => 2,
@@ -234,19 +237,68 @@ describe("HealthPotion works correctly", () => {
       () => 2
     );
     const enemyButton = screen.getByRole("button", { name: enemy.name });
-    userEvent.dblClick(enemyButton);
+    userEvent.click(enemyButton);
+    userEvent.click(enemyButton);
     const consumableButton = screen.getByRole("button", {
       name: /poción salud/i,
     });
     userEvent.click(consumableButton);
     const playerElement = screen.getByTestId("playerSection");
-    const playerLife = getByText(playerElement, /vida: 40/i);
+    const playerLife = getByText(playerElement, /vida: 45/i);
     expect(playerLife).toBeInTheDocument();
 
     const log = screen.getByRole("log");
     const healtpotionMessage = getByText(
       log,
-      /jugador usa poti de vida y aumenta 10 puntos de vida/i
+      "Jugador usa poti de vida → +10 puntos de vida"
+    );
+    expect(healtpotionMessage).toBeInTheDocument();
+  });
+  it("Player can use potion: player life does not exceed maxLife, player life changes and is registered in CombatLog", () => {
+    Setup(
+      () => 8,
+      () => 2,
+      () => 16,
+      () => 2
+    );
+    const enemyButton = screen.getByRole("button", { name: enemy.name });
+    userEvent.click(enemyButton);
+    const consumableButton = screen.getByRole("button", {
+      name: /poción salud/i,
+    });
+    userEvent.click(consumableButton);
+    const playerElement = screen.getByTestId("playerSection");
+    const playerLife = getByText(playerElement, /vida: 45/i);
+    expect(playerLife).toBeInTheDocument();
+
+    const log = screen.getByRole("log");
+    const healtpotionMessage = getByText(
+      log,
+      /jugador usa poti de vida → +5 puntos de vida/i
+    );
+    expect(healtpotionMessage).toBeInTheDocument();
+  });
+  it("Player can not use potion and is registered in CombatLog", () => {
+    Setup(
+      () => 12,
+      () => 2,
+      () => 8,
+      () => 2
+    );
+    const enemyButton = screen.getByRole("button", { name: enemy.name });
+    userEvent.click(enemyButton);
+    const consumableButton = screen.getByRole("button", {
+      name: /poción salud/i,
+    });
+    userEvent.click(consumableButton);
+    const playerElement = screen.getByTestId("playerSection");
+    const playerLife = getByText(playerElement, /vida: 50/i);
+    expect(playerLife).toBeInTheDocument();
+
+    const log = screen.getByRole("log");
+    const healtpotionMessage = getByText(
+      log,
+      /el jugador tiene demasiada vida para usar poti/i
     );
     expect(healtpotionMessage).toBeInTheDocument();
   });

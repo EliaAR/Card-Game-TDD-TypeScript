@@ -21,7 +21,7 @@ const player: CharacterObject[] = new Array(4).fill({
 
 const healthPotion: ConsumableObject = {
   name: "Poción salud",
-  number: 2,
+  number: 3,
   srcImg: "https://via.placeholder.com/150",
 };
 
@@ -135,7 +135,7 @@ describe("game works correctly", () => {
 });
 
 describe("HealthPotion is display correctly", () => {
-  it("Number of potions change", () => {
+  it("Player have potions and its number change", () => {
     Setup(
       () => 8,
       () => 2,
@@ -150,7 +150,28 @@ describe("HealthPotion is display correctly", () => {
       name: /poción salud/i,
     });
     userEvent.click(consumableButton);
-    const healthPotionNumber = screen.getByText(/nº1/i);
+    const healthPotionNumber = screen.getByText(/nº2/i);
     expect(healthPotionNumber).toBeInTheDocument();
+  });
+  it("Player is out of potions", () => {
+    Setup(
+      () => 8,
+      () => 2,
+      () => 16,
+      () => 3
+    );
+    const buttonOnClick = screen.getByRole("button", {
+      name: "Nueva partida",
+    });
+    userEvent.click(buttonOnClick);
+    const consumableButton = screen.getByRole("button", {
+      name: /poción salud/i,
+    });
+    userEvent.click(consumableButton);
+    userEvent.click(consumableButton);
+    userEvent.click(consumableButton);
+    const healthPotionNumber = screen.getByText(/nº0/i);
+    expect(healthPotionNumber).toBeInTheDocument();
+    expect(consumableButton).toHaveAttribute("aria-disabled", "true");
   });
 });
