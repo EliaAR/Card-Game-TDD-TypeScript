@@ -1,4 +1,5 @@
 import { ConsumableObject } from "../Common/Types";
+import "./Consumable.scss";
 
 interface ConsumableProps extends ConsumableObject {
   onClickConsumable: React.MouseEventHandler<HTMLElement>;
@@ -18,10 +19,13 @@ function Consumable({
       aria-label={name}
       onClick={!consumableDisabled ? onClickConsumable : undefined}
       aria-disabled={consumableDisabled}
+      className="consumable"
     >
-      <p>{name}</p>
-      <img src={srcImg} alt={`Imagen ${name}`} />
-      <p>Nº{number}</p>
+      <p className="consumable__name">{name}</p>
+      <div className="consumable__details">
+        <img src={srcImg} alt={`Imagen ${name}`} className="consumable__img" />
+        <p className="consumable__number">Nº {number}</p>
+      </div>
     </section>
   );
 }

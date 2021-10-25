@@ -1,0 +1,26 @@
+.consumable {
+  padding: 2px 5px 5px;
+  background-color: #061506;
+  border: 5px #1e421e;
+  border-style: ridge inset inset ridge;
+  border-radius: 5px;
+  &__name {
+    font-family: "gaze";
+    color: cornsilk;
+    text-transform: capitalize;
+  }
+  &__details {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  &__img {
+    height: 15px;
+  }
+  &__number {
+    display: inline;
+    font-family: "gaze";
+    color: cornsilk;
+    font-size: 13px;
+  }
+}

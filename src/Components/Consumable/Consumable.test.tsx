@@ -29,7 +29,7 @@ describe("Consumable works correctly", () => {
   });
   it("Number of remaining consumables is shown", () => {
     SetUp();
-    const consumableRemaining = screen.getByText(/nº2/i);
+    const consumableRemaining = screen.getByText(/nº 2/i);
     expect(consumableRemaining).toBeInTheDocument();
   });
   it("when consumable is enabled, onClickConsumable is called", () => {

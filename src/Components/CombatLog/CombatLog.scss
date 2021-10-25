@@ -9,9 +9,9 @@
     text-align: center;
     font-family: "caxton";
     font-weight: bold;
-    font-size: 17px;
+    font-size: 18px;
     text-transform: uppercase;
-    color: rgb(87, 70, 7);
+    color: #675305;
   }
   &__msg {
     padding: 0 10px;
@@ -21,10 +21,12 @@
   }
   &__msg--playerTurn {
     padding-top: 10px;
-    color: rgb(126, 60, 60);
+    color: #903f3f;
+    font-weight: bold;
   }
   &__msg--enemyTurn {
     color: rgb(63, 73, 87);
+    font-weight: bold;
   }
   &__msg--attack {
     color: cornsilk;
