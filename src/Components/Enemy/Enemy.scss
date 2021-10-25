@@ -15,12 +15,12 @@
   &__category--level4 {
     font-size: 22px;
     font-weight: bolder;
-    color: #343434;
+    color: #2e4a6d;
     text-shadow: #2e2c2c 1px 1px 0;
   }
   &__container {
     width: 130px;
-    height: 220px;
+    height: 225px;
     background-color: #393127;
     border: 5px #2f3a49;
     border-style: ridge inset inset ridge;
@@ -28,8 +28,8 @@
     cursor: pointer;
   }
   &__container--level4 {
-    background-color: #1e1912;
-    border-color: #020c18;
+    background-color: #2d2519;
+    border-color: #04162b;
   }
   &__name {
     font-family: "breathe-fire";
@@ -40,7 +40,7 @@
     font-size: 20px;
   }
   &__name--level4 {
-    color: #3a3938;
+    color: #4e4d4c;
     text-shadow: #0c1e38 1px 1px 0;
   }
   &__image {
@@ -49,6 +49,7 @@
     border-radius: 10px;
   }
   &__statsContainer {
+    padding-bottom: 5px;
     font-family: "gaze";
     color: cornsilk;
   }

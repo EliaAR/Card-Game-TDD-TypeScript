@@ -28,7 +28,10 @@
     color: rgb(63, 73, 87);
     font-weight: bold;
   }
-  &__msg--attack {
+  &__msg--attack,
+  &__msg--consumable {
     color: cornsilk;
+    text-align: justify;
+    hyphens: auto;
   }
 }
