@@ -1,20 +1,36 @@
 import { rollD20, rollD4 } from "./dices";
 import { getAbilityModifier } from "./getAbilityModifier";
 
+interface ResolveCombatReturn {
+  damage: number;
+  resultD20: number;
+  resultD4: number;
+}
+
 function resolveCombat(
   strength: number,
   dexterity: number,
   roll20 = rollD20,
   roll4 = rollD4
-): number {
+): ResolveCombatReturn {
   const strengthModifier = getAbilityModifier(strength);
   const dexterityModifier = getAbilityModifier(dexterity);
-  const attackRoll = roll20() + strengthModifier;
+  const resultD20 = roll20();
+  const resultD4 = roll4();
+  const attackRoll = resultD20 + strengthModifier;
   const armorClass = 10 + dexterityModifier;
   if (attackRoll >= armorClass) {
-    return roll4() + strengthModifier;
+    return {
+      damage: resultD4 + strengthModifier,
+      resultD20,
+      resultD4,
+    };
   } else {
-    return 0;
+    return {
+      damage: 0,
+      resultD20,
+      resultD4,
+    };
   }
 }
 export { resolveCombat };

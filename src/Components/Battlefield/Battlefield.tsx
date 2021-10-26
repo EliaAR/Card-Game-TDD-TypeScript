@@ -48,20 +48,20 @@ function Battlefield({
 
   useEffect(() => {
     if (enemyTurn) {
-      const damageToPlayer = resolveCombat(
+      const { damage } = resolveCombat(
         enemy.strength,
         player.dexterity,
         mockRoll20Player,
         mockRoll4Player
       );
-      const playerResultLife = playerLife - damageToPlayer;
+      const playerResultLife = playerLife - damage;
       setPlayerLife(playerResultLife > 0 ? playerResultLife : 0);
-      if (damageToPlayer) {
+      if (damage) {
         setMessages([
           ...messages,
           { text: "Turno del enemigo", type: "enemyTurn" },
           {
-            text: `Ataque exitoso del enemigo, ${damageToPlayer} puntos de daño`,
+            text: `Ataque exitoso del enemigo, ${damage} puntos de daño`,
             type: "attack",
           },
         ]);
@@ -105,19 +105,19 @@ function Battlefield({
         <section className="main__charactersContainer">
           <Enemy
             onClickEnemy={() => {
-              const damageToEnemy = resolveCombat(
+              const { damage } = resolveCombat(
                 player.strength,
                 enemy.dexterity,
                 mockRoll20Enemy,
                 mockRoll4Enemy
               );
-              const enemyResultLife = enemyLife - damageToEnemy;
+              const enemyResultLife = enemyLife - damage;
               setEnemyLife(enemyResultLife > 0 ? enemyResultLife : 0);
-              if (damageToEnemy) {
+              if (damage) {
                 setMessages([
                   ...messages,
                   {
-                    text: `Ataque exitoso del jugador, ${damageToEnemy} puntos de daño`,
+                    text: `Ataque exitoso del jugador, ${damage} puntos de daño`,
                     type: "attack",
                   },
                 ]);
