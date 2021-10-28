@@ -48,7 +48,13 @@ function Battlefield({
 
   useEffect(() => {
     if (enemyTurn) {
-      const { damage, resultD20, resultD4 } = resolveCombat(
+      const {
+        damage,
+        resultD20,
+        resultD4,
+        strengthModifier,
+        dexterityModifier,
+      } = resolveCombat(
         enemy.strength,
         player.dexterity,
         mockRoll20Player,
@@ -61,11 +67,11 @@ function Battlefield({
           ...messages,
           { text: "Turno del enemigo", type: "enemyTurn" },
           {
-            text: `Enemigo lanza D20 y saca ${resultD20}. Ataque exitoso del enemigo`,
+            text: `- Tirada ataque: ${resultD20} + ${strengthModifier}. Ataque exitoso del enemigo`,
             type: "attack",
           },
           {
-            text: `Enemigo lanza D4 y saca ${resultD4}. ${damage} puntos de daño`,
+            text: `- Tirada daño: ${resultD4} + ${dexterityModifier}. Te hace ${damage} puntos de daño`,
             type: "attack",
           },
         ]);
@@ -75,7 +81,7 @@ function Battlefield({
           ...messages,
           { text: "Turno del enemigo", type: "enemyTurn" },
           {
-            text: `Enemigo lanza D20 y saca ${resultD20}. Ataque fallido del enemigo`,
+            text: `- Tirada ataque: ${resultD20} + ${strengthModifier}. Ataque fallido del enemigo`,
             type: "attack",
           },
         ]);
@@ -109,7 +115,13 @@ function Battlefield({
         <section className="main__charactersContainer">
           <Enemy
             onClickEnemy={() => {
-              const { damage, resultD20, resultD4 } = resolveCombat(
+              const {
+                damage,
+                resultD20,
+                resultD4,
+                strengthModifier,
+                dexterityModifier,
+              } = resolveCombat(
                 player.strength,
                 enemy.dexterity,
                 mockRoll20Enemy,
@@ -121,11 +133,11 @@ function Battlefield({
                 setMessages([
                   ...messages,
                   {
-                    text: `Lanzas D20 y sacas ${resultD20}. Tu ataque es exitoso!`,
+                    text: `- Tirada ataque: ${resultD20} + ${strengthModifier}. Tu ataque es exitoso!`,
                     type: "attack",
                   },
                   {
-                    text: `Lanzas D4 y sacas ${resultD4}. ${damage} puntos de daño!`,
+                    text: `- Tirada daño: ${resultD4} + ${dexterityModifier}. Haces ${damage} puntos de daño!`,
                     type: "attack",
                   },
                 ]);
@@ -133,7 +145,7 @@ function Battlefield({
                 setMessages([
                   ...messages,
                   {
-                    text: `Lanzas D20 y sacas ${resultD20}. Tu ataque falla`,
+                    text: `- Tirada ataque: ${resultD20} + ${strengthModifier}. Tu ataque falla`,
                     type: "attack",
                   },
                 ]);
@@ -164,7 +176,7 @@ function Battlefield({
                   setMessages([
                     ...messages,
                     {
-                      text: "Usas poti de vida → +10 puntos de vida",
+                      text: "- Usas poti de vida → +10 puntos de vida",
                       type: "consumable",
                     },
                   ]);
@@ -174,7 +186,7 @@ function Battlefield({
                   setMessages([
                     ...messages,
                     {
-                      text: `Usas poti de vida → ${remainingPlayerLife} puntos de vida`,
+                      text: `- Usas poti de vida → ${remainingPlayerLife} puntos de vida`,
                       type: "consumable",
                     },
                   ]);
@@ -184,7 +196,7 @@ function Battlefield({
                 setMessages([
                   ...messages,
                   {
-                    text: "Tienes demasiada vida para usar poti",
+                    text: "- Tienes demasiada vida para usar poti",
                     type: "consumable",
                   },
                 ]);

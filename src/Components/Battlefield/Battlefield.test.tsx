@@ -68,11 +68,11 @@ describe("Combat works correctly", () => {
     const enemyLife = getByText(enemyButton, /vida: 25/i);
     const attackPlayerMessage = getByText(
       log,
-      /lanzas D20 y sacas 12\. tu ataque es exitoso!/i
+      "- Tirada ataque: 12 + 3. Tu ataque es exitoso!"
     );
     const resultAttackPlayerMessage = getByText(
       log,
-      /lanzas D4 y sacas 2\. 5 puntos de daño!/i
+      "- Tirada daño: 2 + 2. Haces 5 puntos de daño!"
     );
     expect(enemyLife).toBeInTheDocument();
     expect(attackPlayerMessage).toBeInTheDocument();
@@ -85,11 +85,11 @@ describe("Combat works correctly", () => {
     const playerLife = getByText(playerElement, /vida: 45/i);
     const attackEnemyMessage = getByText(
       log,
-      /enemigo lanza D20 y saca 16\. ataque exitoso del enemigo/i
+      "- Tirada ataque: 16 + 3. Ataque exitoso del enemigo"
     );
     const resultAttackEnemyMessage = getByText(
       log,
-      /enemigo lanza D4 y saca 2\. 5 puntos de daño/i
+      "- Tirada daño: 2 + 2. Te hace 5 puntos de daño"
     );
     expect(playerLife).toBeInTheDocument();
     expect(attackEnemyMessage).toBeInTheDocument();
@@ -111,11 +111,11 @@ describe("Combat works correctly", () => {
     const enemyLife = getByText(enemyButton, /vida: 25/i);
     const attackPlayerMessage = getByText(
       log,
-      /lanzas D20 y sacas 12\. tu ataque es exitoso!/i
+      "- Tirada ataque: 12 + 3. Tu ataque es exitoso!"
     );
     const resultAttackPlayerMessage = getByText(
       log,
-      /lanzas D4 y sacas 2\. 5 puntos de daño!/i
+      "- Tirada daño: 2 + 2. Haces 5 puntos de daño!"
     );
     expect(enemyLife).toBeInTheDocument();
     expect(attackPlayerMessage).toBeInTheDocument();
@@ -128,7 +128,7 @@ describe("Combat works correctly", () => {
     const playerLife = getByText(playerElement, /vida: 50/i);
     const attackEnemyMessage = getByText(
       log,
-      /enemigo lanza D20 y saca 8\. ataque fallido del enemigo/i
+      "- Tirada ataque: 8 + 3. Ataque fallido del enemigo"
     );
     expect(playerLife).toBeInTheDocument();
     expect(attackEnemyMessage).toBeInTheDocument();
@@ -149,7 +149,7 @@ describe("Combat works correctly", () => {
     const enemyLife = getByText(enemyButton, /vida: 30/i);
     const attackPlayerMessage = getByText(
       log,
-      /lanzas D20 y sacas 8\. tu ataque falla/i
+      "- Tirada ataque: 8 + 3. Tu ataque falla"
     );
     expect(enemyLife).toBeInTheDocument();
     expect(attackPlayerMessage).toBeInTheDocument();
@@ -161,11 +161,11 @@ describe("Combat works correctly", () => {
     const playerLife = getByText(playerElement, /vida: 45/i);
     const attackEnemyMessage = getByText(
       log,
-      /enemigo lanza D20 y saca 16\. ataque exitoso del enemigo/i
+      "- Tirada ataque: 16 + 3. Ataque exitoso del enemigo"
     );
     const resultAttackEnemyMessage = getByText(
       log,
-      /enemigo lanza D4 y saca 2\. 5 puntos de daño/i
+      "- Tirada daño: 2 + 2. Te hace 5 puntos de daño"
     );
     expect(playerLife).toBeInTheDocument();
     expect(attackEnemyMessage).toBeInTheDocument();
@@ -187,7 +187,7 @@ describe("Combat works correctly", () => {
     const enemyLife = getByText(enemyButton, /vida: 30/i);
     const attackPlayerMessage = getByText(
       log,
-      /lanzas D20 y sacas 8\. tu ataque falla/i
+      "- Tirada ataque: 8 + 3. Tu ataque falla"
     );
     expect(enemyLife).toBeInTheDocument();
     expect(attackPlayerMessage).toBeInTheDocument();
@@ -199,7 +199,7 @@ describe("Combat works correctly", () => {
     const playerLife = getByText(playerElement, /vida: 50/i);
     const attackEnemyMessage = getByText(
       log,
-      /enemigo lanza D20 y saca 8\. ataque fallido del enemigo/i
+      "- Tirada ataque: 8 + 3. Ataque fallido del enemigo"
     );
     expect(playerLife).toBeInTheDocument();
     expect(attackEnemyMessage).toBeInTheDocument();
@@ -282,7 +282,7 @@ describe("HealthPotion works correctly", () => {
     const log = screen.getByRole("log");
     const healtpotionMessage = getByText(
       log,
-      "Usas poti de vida → +10 puntos de vida"
+      "- Usas poti de vida → +10 puntos de vida"
     );
     expect(healtpotionMessage).toBeInTheDocument();
   });
@@ -306,7 +306,7 @@ describe("HealthPotion works correctly", () => {
     const log = screen.getByRole("log");
     const healtpotionMessage = getByText(
       log,
-      /usas poti de vida → +5 puntos de vida/i
+      /- usas poti de vida → +5 puntos de vida/i
     );
     expect(healtpotionMessage).toBeInTheDocument();
   });
@@ -330,7 +330,7 @@ describe("HealthPotion works correctly", () => {
     const log = screen.getByRole("log");
     const healtpotionMessage = getByText(
       log,
-      /tienes demasiada vida para usar poti/i
+      /- tienes demasiada vida para usar poti/i
     );
     expect(healtpotionMessage).toBeInTheDocument();
   });

@@ -5,6 +5,8 @@ interface ResolveCombatReturn {
   damage: number;
   resultD20: number;
   resultD4: number;
+  strengthModifier: number;
+  dexterityModifier: number;
 }
 
 function resolveCombat(
@@ -24,12 +26,16 @@ function resolveCombat(
       damage: resultD4 + strengthModifier,
       resultD20,
       resultD4,
+      strengthModifier,
+      dexterityModifier,
     };
   } else {
     return {
       damage: 0,
       resultD20,
       resultD4,
+      strengthModifier,
+      dexterityModifier,
     };
   }
 }
