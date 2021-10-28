@@ -71,7 +71,7 @@ function Battlefield({
             type: "attack",
           },
           {
-            text: `- Tirada daño: ${resultD4} + ${dexterityModifier}. Te hace ${damage} puntos de daño`,
+            text: `- Tirada daño: ${resultD4} + ${strengthModifier}. Te hace ${damage} puntos de daño`,
             type: "attack",
           },
         ]);
@@ -137,7 +137,7 @@ function Battlefield({
                     type: "attack",
                   },
                   {
-                    text: `- Tirada daño: ${resultD4} + ${dexterityModifier}. Haces ${damage} puntos de daño!`,
+                    text: `- Tirada daño: ${resultD4} + ${strengthModifier}. Haces ${damage} puntos de daño!`,
                     type: "attack",
                   },
                 ]);

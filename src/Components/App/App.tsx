@@ -88,6 +88,7 @@ function App({
           } else if (combatResult === "win" && level === 4) {
             setScreen("win-game");
             setLevel(1);
+            setNumberPotions(3);
           } else {
             setScreen("lose");
           }

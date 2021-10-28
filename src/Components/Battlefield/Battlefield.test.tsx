@@ -72,7 +72,7 @@ describe("Combat works correctly", () => {
     );
     const resultAttackPlayerMessage = getByText(
       log,
-      "- Tirada daño: 2 + 2. Haces 5 puntos de daño!"
+      "- Tirada daño: 2 + 3. Haces 5 puntos de daño!"
     );
     expect(enemyLife).toBeInTheDocument();
     expect(attackPlayerMessage).toBeInTheDocument();
@@ -89,7 +89,7 @@ describe("Combat works correctly", () => {
     );
     const resultAttackEnemyMessage = getByText(
       log,
-      "- Tirada daño: 2 + 2. Te hace 5 puntos de daño"
+      "- Tirada daño: 2 + 3. Te hace 5 puntos de daño"
     );
     expect(playerLife).toBeInTheDocument();
     expect(attackEnemyMessage).toBeInTheDocument();
@@ -115,7 +115,7 @@ describe("Combat works correctly", () => {
     );
     const resultAttackPlayerMessage = getByText(
       log,
-      "- Tirada daño: 2 + 2. Haces 5 puntos de daño!"
+      "- Tirada daño: 2 + 3. Haces 5 puntos de daño!"
     );
     expect(enemyLife).toBeInTheDocument();
     expect(attackPlayerMessage).toBeInTheDocument();
@@ -165,7 +165,7 @@ describe("Combat works correctly", () => {
     );
     const resultAttackEnemyMessage = getByText(
       log,
-      "- Tirada daño: 2 + 2. Te hace 5 puntos de daño"
+      "- Tirada daño: 2 + 3. Te hace 5 puntos de daño"
     );
     expect(playerLife).toBeInTheDocument();
     expect(attackEnemyMessage).toBeInTheDocument();
