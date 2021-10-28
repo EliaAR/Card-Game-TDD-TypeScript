@@ -82,10 +82,7 @@ function Battlefield({
         setEnemyTurn(false);
       }
     } else {
-      setMessages([
-        ...messages,
-        { text: "Turno del jugador", type: "playerTurn" },
-      ]);
+      setMessages([...messages, { text: "Tu turno", type: "playerTurn" }]);
     }
   }, [enemyTurn]);
 
@@ -124,7 +121,7 @@ function Battlefield({
                 setMessages([
                   ...messages,
                   {
-                    text: `Lanzas D20 y sacas ${resultD20}. Ataque exitoso del jugador!`,
+                    text: `Lanzas D20 y sacas ${resultD20}. Tu ataque es exitoso!`,
                     type: "attack",
                   },
                   {
@@ -136,7 +133,7 @@ function Battlefield({
                 setMessages([
                   ...messages,
                   {
-                    text: `Lanzas D20 y sacas ${resultD20}. Ataque fallido del jugador`,
+                    text: `Lanzas D20 y sacas ${resultD20}. Tu ataque falla`,
                     type: "attack",
                   },
                 ]);
@@ -167,7 +164,7 @@ function Battlefield({
                   setMessages([
                     ...messages,
                     {
-                      text: "Jugador usa poti de vida → +10 puntos de vida",
+                      text: "Usas poti de vida → +10 puntos de vida",
                       type: "consumable",
                     },
                   ]);
@@ -177,7 +174,7 @@ function Battlefield({
                   setMessages([
                     ...messages,
                     {
-                      text: `Jugador usa poti de vida → ${remainingPlayerLife} puntos de vida`,
+                      text: `Usas poti de vida → ${remainingPlayerLife} puntos de vida`,
                       type: "consumable",
                     },
                   ]);
@@ -187,7 +184,7 @@ function Battlefield({
                 setMessages([
                   ...messages,
                   {
-                    text: "El jugador tiene demasiada vida para usar poti",
+                    text: "Tienes demasiada vida para usar poti",
                     type: "consumable",
                   },
                 ]);

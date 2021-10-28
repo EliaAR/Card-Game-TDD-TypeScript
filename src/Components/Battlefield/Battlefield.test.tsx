@@ -60,7 +60,7 @@ describe("Combat works correctly", () => {
       () => 2
     );
     const log = screen.getByRole("log");
-    const turnPlayerMessage = getByText(log, /turno del jugador/i);
+    const turnPlayerMessage = getByText(log, /tu turno/i);
     expect(turnPlayerMessage).toBeInTheDocument();
 
     const enemyButton = screen.getByRole("button", { name: enemy.name });
@@ -68,7 +68,7 @@ describe("Combat works correctly", () => {
     const enemyLife = getByText(enemyButton, /vida: 25/i);
     const attackPlayerMessage = getByText(
       log,
-      /lanzas D20 y sacas 12\. ataque exitoso del jugador!/i
+      /lanzas D20 y sacas 12\. tu ataque es exitoso!/i
     );
     const resultAttackPlayerMessage = getByText(
       log,
@@ -103,7 +103,7 @@ describe("Combat works correctly", () => {
       () => 2
     );
     const log = screen.getByRole("log");
-    const turnPlayerMessage = getByText(log, /turno del jugador/i);
+    const turnPlayerMessage = getByText(log, /tu turno/i);
     expect(turnPlayerMessage).toBeInTheDocument();
 
     const enemyButton = screen.getByRole("button", { name: enemy.name });
@@ -111,7 +111,7 @@ describe("Combat works correctly", () => {
     const enemyLife = getByText(enemyButton, /vida: 25/i);
     const attackPlayerMessage = getByText(
       log,
-      /lanzas D20 y sacas 12\. ataque exitoso del jugador!/i
+      /lanzas D20 y sacas 12\. tu ataque es exitoso!/i
     );
     const resultAttackPlayerMessage = getByText(
       log,
@@ -141,7 +141,7 @@ describe("Combat works correctly", () => {
       () => 2
     );
     const log = screen.getByRole("log");
-    const turnPlayerMessage = getByText(log, /turno del jugador/i);
+    const turnPlayerMessage = getByText(log, /tu turno/i);
     expect(turnPlayerMessage).toBeInTheDocument();
 
     const enemyButton = screen.getByRole("button", { name: enemy.name });
@@ -149,7 +149,7 @@ describe("Combat works correctly", () => {
     const enemyLife = getByText(enemyButton, /vida: 30/i);
     const attackPlayerMessage = getByText(
       log,
-      /lanzas D20 y sacas 8\. ataque fallido del jugador/i
+      /lanzas D20 y sacas 8\. tu ataque falla/i
     );
     expect(enemyLife).toBeInTheDocument();
     expect(attackPlayerMessage).toBeInTheDocument();
@@ -179,7 +179,7 @@ describe("Combat works correctly", () => {
       () => 2
     );
     const log = screen.getByRole("log");
-    const turnPlayerMessage = getByText(log, /turno del jugador/i);
+    const turnPlayerMessage = getByText(log, /tu turno/i);
     expect(turnPlayerMessage).toBeInTheDocument();
 
     const enemyButton = screen.getByRole("button", { name: enemy.name });
@@ -187,7 +187,7 @@ describe("Combat works correctly", () => {
     const enemyLife = getByText(enemyButton, /vida: 30/i);
     const attackPlayerMessage = getByText(
       log,
-      /lanzas D20 y sacas 8\. ataque fallido del jugador/i
+      /lanzas D20 y sacas 8\. tu ataque falla/i
     );
     expect(enemyLife).toBeInTheDocument();
     expect(attackPlayerMessage).toBeInTheDocument();
@@ -282,7 +282,7 @@ describe("HealthPotion works correctly", () => {
     const log = screen.getByRole("log");
     const healtpotionMessage = getByText(
       log,
-      "Jugador usa poti de vida → +10 puntos de vida"
+      "Usas poti de vida → +10 puntos de vida"
     );
     expect(healtpotionMessage).toBeInTheDocument();
   });
@@ -306,7 +306,7 @@ describe("HealthPotion works correctly", () => {
     const log = screen.getByRole("log");
     const healtpotionMessage = getByText(
       log,
-      /jugador usa poti de vida → +5 puntos de vida/i
+      /usas poti de vida → +5 puntos de vida/i
     );
     expect(healtpotionMessage).toBeInTheDocument();
   });
@@ -330,7 +330,7 @@ describe("HealthPotion works correctly", () => {
     const log = screen.getByRole("log");
     const healtpotionMessage = getByText(
       log,
-      /el jugador tiene demasiada vida para usar poti/i
+      /tienes demasiada vida para usar poti/i
     );
     expect(healtpotionMessage).toBeInTheDocument();
   });
