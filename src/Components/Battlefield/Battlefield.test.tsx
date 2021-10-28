@@ -68,10 +68,15 @@ describe("Combat works correctly", () => {
     const enemyLife = getByText(enemyButton, /vida: 25/i);
     const attackPlayerMessage = getByText(
       log,
-      /ataque exitoso del jugador, 5 puntos de daño/i
+      /lanzas D20 y sacas 12\. ataque exitoso del jugador!/i
+    );
+    const resultAttackPlayerMessage = getByText(
+      log,
+      /lanzas D4 y sacas 2\. 5 puntos de daño!/i
     );
     expect(enemyLife).toBeInTheDocument();
     expect(attackPlayerMessage).toBeInTheDocument();
+    expect(resultAttackPlayerMessage).toBeInTheDocument();
 
     const turnEnemyMessage = getByText(log, /turno del enemigo/i);
     expect(turnEnemyMessage).toBeInTheDocument();
@@ -80,10 +85,15 @@ describe("Combat works correctly", () => {
     const playerLife = getByText(playerElement, /vida: 45/i);
     const attackEnemyMessage = getByText(
       log,
-      /ataque exitoso del enemigo, 5 puntos de daño/i
+      /enemigo lanza D20 y saca 16\. ataque exitoso del enemigo/i
+    );
+    const resultAttackEnemyMessage = getByText(
+      log,
+      /enemigo lanza D4 y saca 2\. 5 puntos de daño/i
     );
     expect(playerLife).toBeInTheDocument();
     expect(attackEnemyMessage).toBeInTheDocument();
+    expect(resultAttackEnemyMessage).toBeInTheDocument();
   });
   it("Player hits, enemy fails, life changes and is registered in CombatLog", () => {
     Setup(
@@ -101,17 +111,25 @@ describe("Combat works correctly", () => {
     const enemyLife = getByText(enemyButton, /vida: 25/i);
     const attackPlayerMessage = getByText(
       log,
-      /ataque exitoso del jugador, 5 puntos de daño/i
+      /lanzas D20 y sacas 12\. ataque exitoso del jugador!/i
+    );
+    const resultAttackPlayerMessage = getByText(
+      log,
+      /lanzas D4 y sacas 2\. 5 puntos de daño!/i
     );
     expect(enemyLife).toBeInTheDocument();
     expect(attackPlayerMessage).toBeInTheDocument();
+    expect(resultAttackPlayerMessage).toBeInTheDocument();
 
     const turnEnemyMessage = getByText(log, /turno del enemigo/i);
     expect(turnEnemyMessage).toBeInTheDocument();
 
     const playerElement = screen.getByTestId("playerSection");
     const playerLife = getByText(playerElement, /vida: 50/i);
-    const attackEnemyMessage = getByText(log, /ataque fallido del enemigo/i);
+    const attackEnemyMessage = getByText(
+      log,
+      /enemigo lanza D20 y saca 8\. ataque fallido del enemigo/i
+    );
     expect(playerLife).toBeInTheDocument();
     expect(attackEnemyMessage).toBeInTheDocument();
   });
@@ -129,7 +147,10 @@ describe("Combat works correctly", () => {
     const enemyButton = screen.getByRole("button", { name: enemy.name });
     userEvent.click(enemyButton);
     const enemyLife = getByText(enemyButton, /vida: 30/i);
-    const attackPlayerMessage = getByText(log, /ataque fallido del jugador/i);
+    const attackPlayerMessage = getByText(
+      log,
+      /lanzas D20 y sacas 8\. ataque fallido del jugador/i
+    );
     expect(enemyLife).toBeInTheDocument();
     expect(attackPlayerMessage).toBeInTheDocument();
 
@@ -140,10 +161,15 @@ describe("Combat works correctly", () => {
     const playerLife = getByText(playerElement, /vida: 45/i);
     const attackEnemyMessage = getByText(
       log,
-      /ataque exitoso del enemigo, 5 puntos de daño/i
+      /enemigo lanza D20 y saca 16\. ataque exitoso del enemigo/i
+    );
+    const resultAttackEnemyMessage = getByText(
+      log,
+      /enemigo lanza D4 y saca 2\. 5 puntos de daño/i
     );
     expect(playerLife).toBeInTheDocument();
     expect(attackEnemyMessage).toBeInTheDocument();
+    expect(resultAttackEnemyMessage).toBeInTheDocument();
   });
   it("Player and enemy fail and is registered in CombatLog", () => {
     Setup(
@@ -159,7 +185,10 @@ describe("Combat works correctly", () => {
     const enemyButton = screen.getByRole("button", { name: enemy.name });
     userEvent.click(enemyButton);
     const enemyLife = getByText(enemyButton, /vida: 30/i);
-    const attackPlayerMessage = getByText(log, /ataque fallido del jugador/i);
+    const attackPlayerMessage = getByText(
+      log,
+      /lanzas D20 y sacas 8\. ataque fallido del jugador/i
+    );
     expect(enemyLife).toBeInTheDocument();
     expect(attackPlayerMessage).toBeInTheDocument();
 
@@ -168,7 +197,10 @@ describe("Combat works correctly", () => {
 
     const playerElement = screen.getByTestId("playerSection");
     const playerLife = getByText(playerElement, /vida: 50/i);
-    const attackEnemyMessage = getByText(log, /ataque fallido del enemigo/i);
+    const attackEnemyMessage = getByText(
+      log,
+      /enemigo lanza D20 y saca 8\. ataque fallido del enemigo/i
+    );
     expect(playerLife).toBeInTheDocument();
     expect(attackEnemyMessage).toBeInTheDocument();
   });
