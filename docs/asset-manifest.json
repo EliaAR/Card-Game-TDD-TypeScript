@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/Card-Game-TDD-TypeScript/static/css/main.9ad6064d.chunk.css",
-    "main.js": "/Card-Game-TDD-TypeScript/static/js/main.33bf4e27.chunk.js",
-    "main.js.map": "/Card-Game-TDD-TypeScript/static/js/main.33bf4e27.chunk.js.map",
-    "runtime-main.js": "/Card-Game-TDD-TypeScript/static/js/runtime-main.496a1f9a.js",
-    "runtime-main.js.map": "/Card-Game-TDD-TypeScript/static/js/runtime-main.496a1f9a.js.map",
+    "main.css": "/Card-Game-TDD-TypeScript/static/css/main.39fa9542.chunk.css",
+    "main.js": "/Card-Game-TDD-TypeScript/static/js/main.6c6556e9.chunk.js",
+    "main.js.map": "/Card-Game-TDD-TypeScript/static/js/main.6c6556e9.chunk.js.map",
+    "runtime-main.js": "/Card-Game-TDD-TypeScript/static/js/runtime-main.a6e065a9.js",
+    "runtime-main.js.map": "/Card-Game-TDD-TypeScript/static/js/runtime-main.a6e065a9.js.map",
     "static/js/2.e5fcbe17.chunk.js": "/Card-Game-TDD-TypeScript/static/js/2.e5fcbe17.chunk.js",
     "static/js/2.e5fcbe17.chunk.js.map": "/Card-Game-TDD-TypeScript/static/js/2.e5fcbe17.chunk.js.map",
-    "static/js/3.a0ac3f11.chunk.js": "/Card-Game-TDD-TypeScript/static/js/3.a0ac3f11.chunk.js",
-    "static/js/3.a0ac3f11.chunk.js.map": "/Card-Game-TDD-TypeScript/static/js/3.a0ac3f11.chunk.js.map",
+    "static/js/3.c13b70ff.chunk.js": "/Card-Game-TDD-TypeScript/static/js/3.c13b70ff.chunk.js",
+    "static/js/3.c13b70ff.chunk.js.map": "/Card-Game-TDD-TypeScript/static/js/3.c13b70ff.chunk.js.map",
     "index.html": "/Card-Game-TDD-TypeScript/index.html",
-    "static/css/main.9ad6064d.chunk.css.map": "/Card-Game-TDD-TypeScript/static/css/main.9ad6064d.chunk.css.map",
+    "static/css/main.39fa9542.chunk.css.map": "/Card-Game-TDD-TypeScript/static/css/main.39fa9542.chunk.css.map",
     "static/js/2.e5fcbe17.chunk.js.LICENSE.txt": "/Card-Game-TDD-TypeScript/static/js/2.e5fcbe17.chunk.js.LICENSE.txt",
     "static/media/Aleksandra.c3b26d86.png": "/Card-Game-TDD-TypeScript/static/media/Aleksandra.c3b26d86.png",
     "static/media/Dwarf.d144af21.png": "/Card-Game-TDD-TypeScript/static/media/Dwarf.d144af21.png",
@@ -19,12 +19,13 @@
     "static/media/Human.3e173381.png": "/Card-Game-TDD-TypeScript/static/media/Human.3e173381.png",
     "static/media/Battlefield.scss": "/Card-Game-TDD-TypeScript/static/media/back4.a81af094.jpg",
     "static/media/HomePage.scss": "/Card-Game-TDD-TypeScript/static/media/backA.ee982bba.png",
-    "static/media/index.css": "/Card-Game-TDD-TypeScript/static/media/zapf-chancery.4add9483.ttf"
+    "static/media/index.css": "/Card-Game-TDD-TypeScript/static/media/zapf-chancery.4add9483.ttf",
+    "static/media/heathPotion.c70a87db.png": "/Card-Game-TDD-TypeScript/static/media/heathPotion.c70a87db.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.496a1f9a.js",
+    "static/js/runtime-main.a6e065a9.js",
     "static/js/2.e5fcbe17.chunk.js",
-    "static/css/main.9ad6064d.chunk.css",
-    "static/js/main.33bf4e27.chunk.js"
+    "static/css/main.39fa9542.chunk.css",
+    "static/js/main.6c6556e9.chunk.js"
   ]
 }
