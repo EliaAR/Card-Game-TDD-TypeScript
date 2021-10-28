@@ -48,7 +48,7 @@ function Battlefield({
 
   useEffect(() => {
     if (enemyTurn) {
-      const { damage } = resolveCombat(
+      const { damage, resultD20, resultD4 } = resolveCombat(
         enemy.strength,
         player.dexterity,
         mockRoll20Player,
@@ -61,7 +61,11 @@ function Battlefield({
           ...messages,
           { text: "Turno del enemigo", type: "enemyTurn" },
           {
-            text: `Ataque exitoso del enemigo, ${damage} puntos de daño`,
+            text: `Enemigo lanza D20 y saca ${resultD20}. Ataque exitoso del enemigo`,
+            type: "attack",
+          },
+          {
+            text: `Enemigo lanza D4 y saca ${resultD4}. ${damage} puntos de daño`,
             type: "attack",
           },
         ]);
@@ -70,7 +74,10 @@ function Battlefield({
         setMessages([
           ...messages,
           { text: "Turno del enemigo", type: "enemyTurn" },
-          { text: "Ataque fallido del enemigo", type: "attack" },
+          {
+            text: `Enemigo lanza D20 y saca ${resultD20}. Ataque fallido del enemigo`,
+            type: "attack",
+          },
         ]);
         setEnemyTurn(false);
       }
@@ -105,7 +112,7 @@ function Battlefield({
         <section className="main__charactersContainer">
           <Enemy
             onClickEnemy={() => {
-              const { damage } = resolveCombat(
+              const { damage, resultD20, resultD4 } = resolveCombat(
                 player.strength,
                 enemy.dexterity,
                 mockRoll20Enemy,
@@ -117,14 +124,21 @@ function Battlefield({
                 setMessages([
                   ...messages,
                   {
-                    text: `Ataque exitoso del jugador, ${damage} puntos de daño`,
+                    text: `Lanzas D20 y sacas ${resultD20}. Ataque exitoso del jugador!`,
+                    type: "attack",
+                  },
+                  {
+                    text: `Lanzas D4 y sacas ${resultD4}. ${damage} puntos de daño!`,
                     type: "attack",
                   },
                 ]);
               } else {
                 setMessages([
                   ...messages,
-                  { text: "Ataque fallido del jugador", type: "attack" },
+                  {
+                    text: `Lanzas D20 y sacas ${resultD20}. Ataque fallido del jugador`,
+                    type: "attack",
+                  },
                 ]);
               }
               setEnemyTurn(true);
