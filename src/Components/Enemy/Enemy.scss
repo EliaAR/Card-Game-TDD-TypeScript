@@ -25,6 +25,7 @@
     border: 5px #2f3a49;
     border-style: ridge inset inset ridge;
     border-radius: 5px;
+    box-shadow: 5px 5px 5px 0px #000000, 5px 5px 15px 5px rgba(84, 84, 84, 0);
     cursor: pointer;
   }
   &__container--level4 {
