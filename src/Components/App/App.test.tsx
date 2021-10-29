@@ -150,7 +150,7 @@ describe("HealthPotion is display correctly", () => {
       name: /poción salud/i,
     });
     userEvent.click(consumableButton);
-    const healthPotionNumber = screen.getByText(/nº 2/i);
+    const healthPotionNumber = screen.getByText(/x2/i);
     expect(healthPotionNumber).toBeInTheDocument();
   });
   it("Player is out of potions", () => {
@@ -170,7 +170,7 @@ describe("HealthPotion is display correctly", () => {
     userEvent.click(consumableButton);
     userEvent.click(consumableButton);
     userEvent.click(consumableButton);
-    const healthPotionNumber = screen.getByText(/nº 0/i);
+    const healthPotionNumber = screen.getByText(/x0/i);
     expect(healthPotionNumber).toBeInTheDocument();
     expect(consumableButton).toHaveAttribute("aria-disabled", "true");
   });

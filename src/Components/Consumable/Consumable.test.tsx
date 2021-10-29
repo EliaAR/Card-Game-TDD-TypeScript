@@ -17,11 +17,6 @@ function SetUp(disabled?: boolean) {
 }
 
 describe("Consumable works correctly", () => {
-  it("Name is shown", () => {
-    SetUp();
-    const consumableName = screen.getByText(/poción salud/i);
-    expect(consumableName).toBeInTheDocument();
-  });
   it("Image is shown", () => {
     SetUp();
     const consumableImg = screen.getByAltText(/imagen poción salud/i);
@@ -29,7 +24,7 @@ describe("Consumable works correctly", () => {
   });
   it("Number of remaining consumables is shown", () => {
     SetUp();
-    const consumableRemaining = screen.getByText(/nº 2/i);
+    const consumableRemaining = screen.getByText(/x2/i);
     expect(consumableRemaining).toBeInTheDocument();
   });
   it("when consumable is enabled, onClickConsumable is called", () => {

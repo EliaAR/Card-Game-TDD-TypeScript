@@ -21,11 +21,8 @@ function Consumable({
       aria-disabled={consumableDisabled}
       className="consumable"
     >
-      <p className="consumable__name">{name}</p>
-      <div className="consumable__details">
-        <img src={srcImg} alt={`Imagen ${name}`} className="consumable__img" />
-        <p className="consumable__number">Nº {number}</p>
-      </div>
+      <img src={srcImg} alt={`Imagen ${name}`} className="consumable__img" />
+      <p className="consumable__number">x{number}</p>
     </section>
   );
 }
